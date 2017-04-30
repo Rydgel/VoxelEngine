@@ -2,10 +2,32 @@ project(VoxelsEngine)
 
 set(HEADER_FILES
         VoxelsEngine.hpp
+        graphics/Window.hpp
+        graphics/opengl/OpenGLError.hpp
+        graphics/Timer.hpp
+        graphics/opengl/Shader.hpp
+        graphics/opengl/VertexAttribute.hpp
+        graphics/opengl/VertexArray.hpp
+        graphics/opengl/Buffer.hpp
+        graphics/opengl/ArrayBuffer.hpp
+        graphics/opengl/IndexBuffer.hpp
+        graphics/opengl/Mesh.hpp
+        graphics/Camera.hpp
+        graphics/InputManager.hpp
         )
 
 set(SOURCE_FILES
-        VoxelsEngine.cpp)
+        VoxelsEngine.cpp
+        graphics/Window.cpp
+        graphics/opengl/OpenGLError.cpp
+        graphics/Timer.cpp
+        graphics/opengl/Shader.cpp
+        graphics/opengl/VertexArray.cpp
+        graphics/opengl/Buffer.cpp
+        graphics/opengl/Mesh.cpp
+        graphics/Camera.cpp
+        graphics/InputManager.cpp
+        )
 
 add_library(VoxelsEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
 
@@ -32,7 +54,19 @@ if (OPENGL_FOUND)
 endif()
 
 # loading glm
+# add_subdirectory(lib/glm-0.9.8.4)
 include_directories(lib/glm-0.9.8.4)
+
+# loading stb_image
+add_subdirectory(lib/stb_image-2.14)
+include_directories(lib/stb_image-2.14)
+target_link_libraries(VoxelsEngine stb_image)
+
+# loading libnoise
+set(BUILD_LIBNOISE_EXAMPLES OFF)
+add_subdirectory(lib/libnoise)
+include_directories(lib/libnoise)
+target_link_libraries(VoxelsEngine noise-static)
 
 # loading OpenAL
 find_package(OpenAL REQUIRED)
