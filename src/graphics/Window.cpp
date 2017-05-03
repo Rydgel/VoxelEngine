@@ -1,4 +1,7 @@
+#include <glad.h>
 #include <stdexcept>
+#include <imgui.h>
+#include <graphics/gui/imgui_impl_glfw_gl3.h>
 #include "Window.hpp"
 
 Window::Window(InputManager & im, const int width, const int height, const char *title)
@@ -13,7 +16,9 @@ Window::Window(InputManager & im, const int width, const int height, const char 
     glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // We want OpenGL 4.1
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+#if __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy
+#endif
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
@@ -30,6 +35,9 @@ Window::Window(InputManager & im, const int width, const int height, const char 
     glfwSwapInterval(0);
     // Glad openGL loader
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+
+    // Setup ImGui binding
+    ImGui_ImplGlfwGL3_Init(window_.get(), true);
 
     glEnable(GL_DEPTH_TEST);
     // don't draw the inside of an element
@@ -49,6 +57,13 @@ Window::Window(InputManager & im, const int width, const int height, const char 
     // Set the required callback functions
     setupEventCallbacks();
     printGLInfos();
+}
+
+Window::~Window()
+{
+    // Cleanup
+    ImGui_ImplGlfwGL3_Shutdown();
+    glfwTerminate();
 }
 
 bool Window::isOpen()
@@ -111,6 +126,11 @@ void Window::setupEventCallbacks()
         auto window = static_cast<Window *>(glfwGetWindowUserPointer(glfwWindow));
         window->onKeyboardEvent(params...);
     });
+
+    glfwSetMouseButtonCallback(windowRawPtr, (GLFWmousebuttonfun) [](auto glfwWindow, auto... params) {
+        auto window = static_cast<Window *>(glfwGetWindowUserPointer(glfwWindow));
+        window->onMouseEvent(params...);
+    });
 }
 
 void Window::onKeyboardEvent(int key, int scancode, int action, int mods)
@@ -122,6 +142,19 @@ void Window::onKeyboardEvent(int key, int scancode, int action, int mods)
             break;
         case GLFW_RELEASE:
             inputManager_.keyReleased(key);
+            break;
+    }
+}
+
+void Window::onMouseEvent(int button, int action, int mods)
+{
+    switch (action) {
+        default: break;
+        case GLFW_PRESS:
+            inputManager_.mousePushed(button);
+            break;
+        case GLFW_RELEASE:
+            inputManager_.mouseReleased(button);
             break;
     }
 }

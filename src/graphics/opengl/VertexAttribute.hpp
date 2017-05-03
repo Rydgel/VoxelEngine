@@ -1,5 +1,5 @@
-#ifndef CHIP8_VERTEX_HPP
-#define CHIP8_VERTEX_HPP
+#ifndef VOXELSENGINE_VERTEX_HPP
+#define VOXELSENGINE_VERTEX_HPP
 
 #include <glm/glm.hpp>
 
@@ -11,4 +11,4 @@ enum VertexAttribute
     Tangent = 0x8
 };
 
-#endif //CHIP8_VERTEX_HPP
+#endif //VOXELSENGINE_VERTEX_HPP

@@ -1,5 +1,5 @@
-#ifndef CHIP8_BUFFER_HPP
-#define CHIP8_BUFFER_HPP
+#ifndef VOXELSENGINE_BUFFER_HPP
+#define VOXELSENGINE_BUFFER_HPP
 
 #include <glad.h>
 #include <vector>
@@ -40,4 +40,4 @@ void Buffer::setData(const std::vector<T> & data, Usage usage)
     unbind();
 }
 
-#endif //CHIP8_BUFFER_HPP
+#endif //VOXELSENGINE_BUFFER_HPP

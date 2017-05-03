@@ -1,7 +1,8 @@
 project(VoxelsEngine)
 
 set(HEADER_FILES
-        VoxelsEngine.hpp
+        Game.hpp
+        graphics/gui/imgui_impl_glfw_gl3.h
         graphics/Window.hpp
         graphics/opengl/OpenGLError.hpp
         graphics/Timer.hpp
@@ -12,12 +13,18 @@ set(HEADER_FILES
         graphics/opengl/ArrayBuffer.hpp
         graphics/opengl/IndexBuffer.hpp
         graphics/opengl/Mesh.hpp
+        graphics/opengl/Frustum.hpp
         graphics/Camera.hpp
         graphics/InputManager.hpp
+        graphics/voxels/Voxel.hpp
+        graphics/voxels/Chunk.hpp
+        graphics/voxels/World.hpp
+        states/IGameState.hpp
         )
 
 set(SOURCE_FILES
-        VoxelsEngine.cpp
+        Game.cpp
+        graphics/gui/imgui_impl_glfw_gl3.cpp
         graphics/Window.cpp
         graphics/opengl/OpenGLError.cpp
         graphics/Timer.cpp
@@ -25,8 +32,13 @@ set(SOURCE_FILES
         graphics/opengl/VertexArray.cpp
         graphics/opengl/Buffer.cpp
         graphics/opengl/Mesh.cpp
+        graphics/opengl/Frustum.cpp
         graphics/Camera.cpp
         graphics/InputManager.cpp
+        graphics/voxels/Voxel.cpp
+        graphics/voxels/Chunk.cpp
+        graphics/voxels/World.cpp
+        states/PlayState.cpp
         )
 
 add_library(VoxelsEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
@@ -57,6 +69,9 @@ endif()
 # add_subdirectory(lib/glm-0.9.8.4)
 include_directories(lib/glm-0.9.8.4)
 
+# loading optional
+include_directories(lib/optional)
+
 # loading stb_image
 add_subdirectory(lib/stb_image-2.14)
 include_directories(lib/stb_image-2.14)
@@ -67,6 +82,11 @@ set(BUILD_LIBNOISE_EXAMPLES OFF)
 add_subdirectory(lib/libnoise)
 include_directories(lib/libnoise)
 target_link_libraries(VoxelsEngine noise-static)
+
+# loading IMGUI
+add_subdirectory(lib/imgui)
+include_directories(lib/imgui)
+target_link_libraries(VoxelsEngine ImGui)
 
 # loading OpenAL
 find_package(OpenAL REQUIRED)

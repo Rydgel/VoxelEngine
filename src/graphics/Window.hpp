@@ -1,7 +1,6 @@
-#ifndef CHIP8_WINDOW_HPP
-#define CHIP8_WINDOW_HPP
+#ifndef VOXELSENGINE_WINDOW_HPP
+#define VOXELSENGINE_WINDOW_HPP
 
-#include <glad.h>
 #include <GLFW/glfw3.h>
 #include <memory>
 #include "InputManager.hpp"
@@ -14,6 +13,11 @@ struct Window
     using GLFWwindowPtr = std::unique_ptr<GLFWwindow, DestroyglfwWin>;
 
     Window(InputManager & im, int width, int height, const char *title);
+    ~Window();
+    Window(const Window & window) = delete;
+    Window & operator=(Window & window) = delete;
+    Window(Window && window) noexcept = delete;
+    Window & operator=(Window && window) noexcept = delete;
 
     void pollEvents();
     bool isOpen();
@@ -30,7 +34,8 @@ private:
     InputManager & inputManager_;
     void setupEventCallbacks();
     void onKeyboardEvent(int key, int scancode, int action, int mods);
+    void onMouseEvent(int button, int action, int mods);
 };
 
 
-#endif //CHIP8_WINDOW_HPP
+#endif //VOXELSENGINE_WINDOW_HPP

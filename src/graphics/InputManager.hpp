@@ -1,5 +1,5 @@
-#ifndef CHIP8_INPUTMANAGER_HPP
-#define CHIP8_INPUTMANAGER_HPP
+#ifndef VOXELSENGINE_INPUTMANAGER_HPP
+#define VOXELSENGINE_INPUTMANAGER_HPP
 
 #include <unordered_map>
 #include <array>
@@ -16,15 +16,18 @@ struct InputManager
     void keyPushed(int key);
     void keyReleased(int key);
     int getKeyState(int key);
-    std::array<uint8_t, 16> toChip8KeyStates();
     void setMousePosition(double xpos, double ypos);
+    void mousePushed(int button);
+    void mouseReleased(int button);
+    int getMouseState(int button);
     const MousePosition getMousePosition();
 
 private:
 
     std::unordered_map<int, bool> keyStates_ {};
+    std::unordered_map<int, bool> mouseStates_ {};
     MousePosition mousePosition_ {};
 };
 
 
-#endif //CHIP8_INPUTMANAGER_HPP
+#endif //VOXELSENGINE_INPUTMANAGER_HPP

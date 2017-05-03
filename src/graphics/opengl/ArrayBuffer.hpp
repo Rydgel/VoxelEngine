@@ -1,5 +1,5 @@
-#ifndef CHIP8_ARRAYBUFFER_HPP
-#define CHIP8_ARRAYBUFFER_HPP
+#ifndef VOXELSENGINE_ARRAYBUFFER_HPP
+#define VOXELSENGINE_ARRAYBUFFER_HPP
 
 #include "Buffer.hpp"
 
@@ -9,4 +9,4 @@ struct ArrayBuffer : public Buffer
 };
 
 
-#endif //CHIP8_ARRAYBUFFER_HPP
+#endif //VOXELSENGINE_ARRAYBUFFER_HPP

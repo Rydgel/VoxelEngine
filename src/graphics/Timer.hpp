@@ -1,5 +1,5 @@
-#ifndef CHIP8_TIMER_HPP
-#define CHIP8_TIMER_HPP
+#ifndef VOXELSENGINE_TIMER_HPP
+#define VOXELSENGINE_TIMER_HPP
 
 #include <chrono>
 
@@ -29,4 +29,4 @@ private:
 };
 
 
-#endif //CHIP8_TIMER_HPP
+#endif //VOXELSENGINE_TIMER_HPP

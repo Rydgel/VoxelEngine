@@ -1,5 +1,5 @@
-#ifndef CHIP8_SHADER_HPP
-#define CHIP8_SHADER_HPP
+#ifndef VOXELSENGINE_SHADER_HPP
+#define VOXELSENGINE_SHADER_HPP
 
 #include <glad.h>
 #include <iostream>
@@ -26,4 +26,4 @@ private:
     GLuint program_;
 };
 
-#endif //CHIP8_SHADER_HPP
+#endif //VOXELSENGINE_SHADER_HPP

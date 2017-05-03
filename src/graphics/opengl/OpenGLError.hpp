@@ -1,5 +1,5 @@
-#ifndef CHIP8_OPENGLERROR_HPP
-#define CHIP8_OPENGLERROR_HPP
+#ifndef VOXELSENGINE_OPENGLERROR_HPP
+#define VOXELSENGINE_OPENGLERROR_HPP
 
 #include <iostream>
 #include <glad.h>
@@ -12,4 +12,4 @@ struct OpenGLError
 };
 
 
-#endif //CHIP8_OPENGLERROR_HPP
+#endif //VOXELSENGINE_OPENGLERROR_HPP

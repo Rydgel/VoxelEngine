@@ -1,5 +1,5 @@
-#ifndef CHIP8_CAMERA_HPP
-#define CHIP8_CAMERA_HPP
+#ifndef VOXELSENGINE_CAMERA_HPP
+#define VOXELSENGINE_CAMERA_HPP
 
 #include <GLFW/glfw3.h>
 #include <unordered_map>
@@ -57,4 +57,4 @@ private:
 };
 
 
-#endif //CHIP8_CAMERA_HPP
+#endif //VOXELSENGINE_CAMERA_HPP

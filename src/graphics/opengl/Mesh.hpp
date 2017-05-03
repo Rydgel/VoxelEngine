@@ -1,8 +1,8 @@
-#ifndef CHIP8_MESH_HPP
-#define CHIP8_MESH_HPP
+#ifndef VOXELSENGINE_MESH_HPP
+#define VOXELSENGINE_MESH_HPP
 
 #include <vector>
-#include <glad.h>
+#include <GLFW/glfw3.h>
 #include <glm/vec3.hpp>
 #include "VertexAttribute.hpp"
 
@@ -35,4 +35,4 @@ private:
 };
 
 
-#endif //CHIP8_MESH_HPP
+#endif //VOXELSENGINE_MESH_HPP
