@@ -70,8 +70,10 @@ void Game::gameLoop()
 
         /* Render game and update timer FPS */
         glClearColor(0.73f, 0.82f, 0.89f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
         currentState.value()->draw(dt);
+
         timer_.updateFPS();
 
         /* Update timer */

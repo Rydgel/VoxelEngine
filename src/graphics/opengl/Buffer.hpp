@@ -1,7 +1,7 @@
 #ifndef VOXELSENGINE_BUFFER_HPP
 #define VOXELSENGINE_BUFFER_HPP
 
-#include <glad.h>
+#include <GLFW/glfw3.h>
 #include <vector>
 
 enum class Usage

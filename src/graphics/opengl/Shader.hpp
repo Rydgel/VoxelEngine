@@ -1,7 +1,7 @@
 #ifndef VOXELSENGINE_SHADER_HPP
 #define VOXELSENGINE_SHADER_HPP
 
-#include <glad.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 #include <glm/glm.hpp>
 
@@ -16,6 +16,7 @@ struct Shader
     void setUniform(const std::string &name, float x);
     void setUniform(const std::string &name, glm::mat4 trans);
     void setUniform(const std::string &name, glm::vec3 vec);
+    void setUniform(const std::string &name, glm::vec4 vec);
     // Use the program
     void bind();
     void unbind();

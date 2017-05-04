@@ -33,8 +33,8 @@ struct Game
 
 private:
 
-    const int windowWidth_ = 800;
-    const int windowHeight_ = 600;
+    const int windowWidth_ = 1200;
+    const int windowHeight_ = 800;
     const char * windowTitle_ = "Voxels!";
 
     WindowPtr windowPtr_;

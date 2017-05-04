@@ -39,7 +39,7 @@ set(SOURCE_FILES
         graphics/voxels/Chunk.cpp
         graphics/voxels/World.cpp
         states/PlayState.cpp
-        )
+        graphics/voxels/Renderer.cpp graphics/voxels/Renderer.hpp)
 
 add_library(VoxelsEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
 

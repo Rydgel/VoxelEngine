@@ -1,7 +1,7 @@
 #ifndef VOXELSENGINE_VERTEXARRAY_HPP
 #define VOXELSENGINE_VERTEXARRAY_HPP
 
-#include <glad.h>
+#include <GLFW/glfw3.h>
 
 struct VertexArray
 {
