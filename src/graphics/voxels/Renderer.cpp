@@ -27,7 +27,7 @@ void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 pr
     shader_.setUniform("view", view);
     shader_.setUniform("projection", projection);
     // todo make this another way
-    shader_.setUniform("colorDraw", glm::vec4(1, 0, 0, 1));
+    shader_.setUniform("colorDraw", glm::vec4(0.8, 1, 0.5, 1));
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     chunk->draw();
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
