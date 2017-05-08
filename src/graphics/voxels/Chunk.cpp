@@ -9,7 +9,7 @@ Chunk::Chunk(int id, glm::vec3 offset)
     voxels_.fill(std::make_shared<Voxel>(VoxelType::GRASS));
 }
 
-const glm::vec3 Chunk::getOffset() const
+const glm::vec3 & Chunk::getOffset() const
 {
     return offset_;
 }

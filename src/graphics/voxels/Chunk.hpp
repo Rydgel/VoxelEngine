@@ -21,7 +21,7 @@ struct Chunk
     bool needMeshing = true;
 
     Chunk(int id, glm::vec3 offset);
-    const glm::vec3 getOffset() const;
+    const glm::vec3 & getOffset() const;
     void meshing();
     void bind();
     void unbind();
