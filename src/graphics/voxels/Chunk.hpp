@@ -7,21 +7,29 @@
 #include <graphics/opengl/VertexArray.hpp>
 #include <graphics/opengl/ArrayBuffer.hpp>
 #include <graphics/opengl/IndexBuffer.hpp>
+#include <optional.hpp>
+#include <graphics/mesher/IMesher.hpp>
+
 #include "Voxel.hpp"
 
+namespace boost = std::experimental;
+using MaybeVoxel = boost::optional<std::shared_ptr<Voxel>>;
 using VoxelPtr = std::shared_ptr<Voxel>;
 
 struct Chunk
 {
-    auto static constexpr chunkWidth = 64;
-    auto static constexpr chunkHeight = 64;
-    auto static constexpr chunkDepth = 64;
+    auto static constexpr chunkWidth = 32;
+    auto static constexpr chunkHeight = 16;
+    auto static constexpr chunkDepth = 32;
     auto static constexpr chunkSize = chunkWidth * chunkHeight * chunkDepth;
 
     bool needMeshing = true;
 
     Chunk(int id, glm::vec3 offset);
     const glm::vec3 & getOffset() const;
+    const MaybeVoxel getVoxel(int x, int y, int z) const;
+    bool isAir(int x, int y, int z) const;
+    bool voxelIsHidden(int x, int y, int z) const;
     void meshing();
     void bind();
     void unbind();
@@ -34,10 +42,11 @@ private:
     std::array<VoxelPtr, chunkSize> voxels_ {};
 
     Mesh chunkMesh_;
+    std::unique_ptr<IMesher> mesherPtr_;
     VertexArray vertexArray_;
     ArrayBuffer positionsBuffer_;
-    ArrayBuffer colorsBuffer_;
     ArrayBuffer normalsBuffer_;
+    ArrayBuffer uvs_;
     IndexBuffer indicesBuffer_;
 };
 

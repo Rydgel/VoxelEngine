@@ -6,6 +6,18 @@
 #include <glm/vec3.hpp>
 #include "VertexAttribute.hpp"
 
+enum Face : uint8_t
+{
+    front = 0,
+    back = 1,
+    top = 2,
+    bottom = 3,
+    right = 4,
+    left = 5,
+};
+
+std::ostream& operator<<(std::ostream&, Face);
+
 struct Mesh
 {
     void addPosition(glm::vec3 position);
@@ -19,8 +31,6 @@ struct Mesh
     const std::vector<glm::vec3> getNormals() const;
     const std::vector<glm::vec2> getUvs() const;
     const std::vector<glm::vec3> getColors() const;
-    // lock the mesh when uploaded to graphic card
-    void lock();
 
 private:
 
@@ -29,9 +39,6 @@ private:
     std::vector<glm::vec3> normals_ {};
     std::vector<glm::vec2> uvs_ {};
     std::vector<glm::vec3> colors_ {};
-    std::vector<GLfloat> vertices_ {};
-
-    bool isModified_ = true;
 };
 
 

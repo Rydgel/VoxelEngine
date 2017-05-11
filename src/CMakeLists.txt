@@ -20,7 +20,9 @@ set(HEADER_FILES
         graphics/voxels/Chunk.hpp
         graphics/voxels/World.hpp
         states/IGameState.hpp
-        )
+        graphics/voxels/Renderer.hpp
+        graphics/mesher/IMesher.hpp
+        graphics/mesher/SimpleMesher.hpp)
 
 set(SOURCE_FILES
         Game.cpp
@@ -39,7 +41,8 @@ set(SOURCE_FILES
         graphics/voxels/Chunk.cpp
         graphics/voxels/World.cpp
         states/PlayState.cpp
-        graphics/voxels/Renderer.cpp graphics/voxels/Renderer.hpp)
+        graphics/voxels/Renderer.cpp
+        graphics/mesher/SimpleMesher.cpp)
 
 add_library(VoxelsEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
 

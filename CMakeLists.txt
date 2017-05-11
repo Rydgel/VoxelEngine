@@ -19,3 +19,4 @@ target_link_libraries(VoxelsEngine_run VoxelsEngine)
 cotire(VoxelsEngine_run)
 
 file(COPY src/graphics/shaders DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}.)
+file(COPY resources DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}.)

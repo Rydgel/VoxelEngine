@@ -1,14 +1,28 @@
 #include "Mesh.hpp"
+#include <ostream>
+
+std::ostream& operator<<(std::ostream& os, const Face face)
+{
+    switch(face)
+    {
+        case Face::front : return os << "front";
+        case Face::back  : return os << "back";
+        case Face::top   : return os << "top";
+        case Face::bottom: return os << "bottom";
+        case Face::right : return os << "right";
+        case Face::left  : return os << "left";
+    }
+    assert(false);
+    return os << "ERROR";
+}
 
 void Mesh::addPosition(const glm::vec3 position)
 {
-    isModified_ = true;
     positions_.push_back(position);
 }
 
 void Mesh::addIndices(const GLuint indice)
 {
-    isModified_ = true;
     indices_.push_back(indice);
 }
 
@@ -19,19 +33,12 @@ void Mesh::addNormal(const glm::vec3 normal)
 
 void Mesh::addUvs(const glm::vec2 uv)
 {
-    isModified_ = true;
     uvs_.push_back(uv);
 }
 
 void Mesh::addColors(const glm::vec3 color)
 {
-    isModified_ = true;
     colors_.push_back(color);
-}
-
-void Mesh::lock()
-{
-    isModified_ = false;
 }
 
 const std::vector<glm::vec3> Mesh::getPositions() const

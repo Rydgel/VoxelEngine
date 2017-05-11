@@ -5,6 +5,12 @@ World::World(Game & game)
 , camera_(game_.getInputManager())
 {
     chunks_.push_back(std::make_unique<Chunk>(1, glm::vec3(0, 0, 0)));
+    chunks_.push_back(std::make_unique<Chunk>(2, glm::vec3(0, 0, 32)));
+    chunks_.push_back(std::make_unique<Chunk>(2, glm::vec3(0, 0, -32)));
+    chunks_.push_back(std::make_unique<Chunk>(2, glm::vec3(32, 0, 0)));
+    chunks_.push_back(std::make_unique<Chunk>(2, glm::vec3(-32, 0, 0)));
+    chunks_.push_back(std::make_unique<Chunk>(2, glm::vec3(32, 0, 32)));
+    chunks_.push_back(std::make_unique<Chunk>(2, glm::vec3(32, 0, -32)));
     renderer_.bind();
 }
 
