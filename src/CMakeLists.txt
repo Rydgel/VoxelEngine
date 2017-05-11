@@ -22,7 +22,10 @@ set(HEADER_FILES
         states/IGameState.hpp
         graphics/voxels/Renderer.hpp
         graphics/mesher/IMesher.hpp
-        graphics/mesher/SimpleMesher.hpp)
+        graphics/mesher/SimpleMesher.hpp
+        utils/SimplexNoise.hpp
+        graphics/voxels/map/MapGenerator.hpp
+        graphics/voxels/map/MapGeneratorHeightmap.hpp)
 
 set(SOURCE_FILES
         Game.cpp
@@ -42,7 +45,9 @@ set(SOURCE_FILES
         graphics/voxels/World.cpp
         states/PlayState.cpp
         graphics/voxels/Renderer.cpp
-        graphics/mesher/SimpleMesher.cpp)
+        graphics/mesher/SimpleMesher.cpp
+        utils/SimplexNoise.cpp
+        graphics/voxels/map/MapGeneratorHeightmap.cpp)
 
 add_library(VoxelsEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
 

@@ -17,7 +17,7 @@ void Renderer::clear()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 projection)
+void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 projection, glm::vec3 cameraPosition)
 {
     // todo calculate position with chunk offset
     auto pos = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -27,13 +27,18 @@ void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 pr
     shader_.setUniform("view", view);
     shader_.setUniform("projection", projection);
     // todo make this another way
-    shader_.setUniform("colorDraw", glm::vec4(0.8, 1, 0.5, 1));
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    shader_.setUniform("colorDraw", glm::vec3(0.8, 1, 0.5));
+    glm::vec3 lightPosLoc(0, 10.0f, 0.0f);
+    glm::vec3 lightColorLoc(1.0f, 1.0f, 1.0f);
+    shader_.setUniform("lightColor", lightColorLoc);
+    shader_.setUniform("lightPos", lightPosLoc);
+    shader_.setUniform("viewPos", cameraPosition);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     chunk->draw();
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    shader_.setUniform("colorDraw", glm::vec4(0, 0, 0, 1));
-    chunk->draw();
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // shader_.setUniform("colorDraw", glm::vec4(0, 0, 0, 1));
+    // chunk->draw();
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     OpenGLError errorGL;
     errorGL.isOpenGLError();

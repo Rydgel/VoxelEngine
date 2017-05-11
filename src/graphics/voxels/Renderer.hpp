@@ -18,7 +18,7 @@ struct Renderer
 
 
     void clear();
-    void draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 projection);
+    void draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 projection, glm::vec3 cameraPosition);
     void bind();
     void unbind();
 

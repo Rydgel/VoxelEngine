@@ -9,8 +9,10 @@
 #include <graphics/opengl/IndexBuffer.hpp>
 #include <optional.hpp>
 #include <graphics/mesher/IMesher.hpp>
-
+#include <graphics/voxels/map/MapGeneratorHeightmap.hpp>
 #include "Voxel.hpp"
+
+class MapGeneratorHeightmap;
 
 namespace boost = std::experimental;
 using MaybeVoxel = boost::optional<std::shared_ptr<Voxel>>;
@@ -19,7 +21,7 @@ using VoxelPtr = std::shared_ptr<Voxel>;
 struct Chunk
 {
     auto static constexpr chunkWidth = 32;
-    auto static constexpr chunkHeight = 16;
+    auto static constexpr chunkHeight = 32;
     auto static constexpr chunkDepth = 32;
     auto static constexpr chunkSize = chunkWidth * chunkHeight * chunkDepth;
 
@@ -30,6 +32,7 @@ struct Chunk
     const MaybeVoxel getVoxel(int x, int y, int z) const;
     bool isAir(int x, int y, int z) const;
     bool voxelIsHidden(int x, int y, int z) const;
+    void fill(Voxel voxel, int x, int y, int z);
     void meshing();
     void bind();
     void unbind();
@@ -40,6 +43,7 @@ private:
     int chunkId_;
     glm::vec3 offset_;
     std::array<VoxelPtr, chunkSize> voxels_ {};
+    std::unique_ptr<MapGeneratorHeightmap> mapGen_;
 
     Mesh chunkMesh_;
     std::unique_ptr<IMesher> mesherPtr_;

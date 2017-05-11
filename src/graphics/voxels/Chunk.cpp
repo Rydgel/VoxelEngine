@@ -8,7 +8,9 @@ Chunk::Chunk(int id, glm::vec3 offset)
 
     mesherPtr_ = std::make_unique<SimpleMesher>(*this, chunkMesh_);
     // todo replace by air
-    voxels_.fill(std::make_shared<Voxel>(VoxelType::GRASS));
+    voxels_.fill(std::make_shared<Voxel>(VoxelType::AIR));
+    mapGen_ = std::make_unique<MapGeneratorHeightmap>(id);
+    mapGen_->makeChunk(*this);
 }
 
 const glm::vec3 & Chunk::getOffset() const
@@ -71,6 +73,13 @@ bool Chunk::voxelIsHidden(int x, int y, int z) const
     if (isAir(x, y, z - 1)) return false;
 
     return !isAir(x, y, z + 1);
+}
+
+void Chunk::fill(Voxel voxel, int x, int y, int z)
+{
+    auto index = x + y * Chunk::chunkWidth + z * Chunk::chunkWidth * Chunk::chunkHeight;
+    voxels_[index] = std::make_shared<Voxel>(voxel);
+    needMeshing = true;
 }
 
 void Chunk::meshing()
