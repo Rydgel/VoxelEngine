@@ -27,21 +27,21 @@ void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 pr
     shader_.setUniform("view", view);
     shader_.setUniform("projection", projection);
     // todo make this another way
-    shader_.setUniform("colorDraw", glm::vec3(0.8, 1, 0.5));
+    shader_.setUniform("colorDraw", glm::vec3(0.02f, 0.47f, 0.18f));
     glm::vec3 lightPosLoc(0, 10.0f, 0.0f);
     glm::vec3 lightColorLoc(1.0f, 1.0f, 1.0f);
     shader_.setUniform("lightColor", lightColorLoc);
     shader_.setUniform("lightPos", lightPosLoc);
     shader_.setUniform("viewPos", cameraPosition);
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     chunk->draw();
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     // shader_.setUniform("colorDraw", glm::vec4(0, 0, 0, 1));
     // chunk->draw();
     // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    OpenGLError errorGL;
-    errorGL.isOpenGLError();
+    // OpenGLError errorGL;
+    // errorGL.isOpenGLError();
 }
 
 void Renderer::bind()

@@ -1,0 +1,11 @@
+#ifndef VOXELSENGINE_TEXTURE_HPP
+#define VOXELSENGINE_TEXTURE_HPP
+
+
+struct Texture
+{
+
+};
+
+
+#endif //VOXELSENGINE_TEXTURE_HPP

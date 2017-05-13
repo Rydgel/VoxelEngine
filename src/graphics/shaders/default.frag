@@ -12,7 +12,6 @@ uniform vec3 colorDraw;
 
 // move that to uniform if still needed
 const vec4 fogColor = vec4(0.73, 0.82, 0.89, 1.0);
-const vec4 cubeColor = vec4(1.0, 0, 0, 1.0);
 
 void main()
 {

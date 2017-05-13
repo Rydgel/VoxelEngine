@@ -13,7 +13,7 @@ Window::Window(InputManager & im, const int width, const int height, const char 
         throw std::runtime_error("Failed to initialize GLFW");
     }
 
-    // glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
+    // glfwWindowHint(GLFW_SAMPLES, 8); // 8x antialiasing
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // We want OpenGL 4.1
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 #if __APPLE__

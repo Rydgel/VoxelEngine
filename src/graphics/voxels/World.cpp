@@ -13,6 +13,25 @@ World::World(Game & game)
     chunks_.push_back(std::make_unique<Chunk>(7, glm::vec3(32, 0, -32)));
     chunks_.push_back(std::make_unique<Chunk>(8, glm::vec3(-32, 0, 32)));
     chunks_.push_back(std::make_unique<Chunk>(9, glm::vec3(-32, 0, -32)));
+
+    chunks_.push_back(std::make_unique<Chunk>(10, glm::vec3(0, 0, -64)));
+    chunks_.push_back(std::make_unique<Chunk>(11, glm::vec3(64, 0, 0)));
+    chunks_.push_back(std::make_unique<Chunk>(12, glm::vec3(-64, 0, 0)));
+    chunks_.push_back(std::make_unique<Chunk>(13, glm::vec3(64, 0, 64)));
+    chunks_.push_back(std::make_unique<Chunk>(14, glm::vec3(64, 0, -64)));
+    chunks_.push_back(std::make_unique<Chunk>(15, glm::vec3(-64, 0, 64)));
+    chunks_.push_back(std::make_unique<Chunk>(16, glm::vec3(-64, 0, -64)));
+    chunks_.push_back(std::make_unique<Chunk>(432, glm::vec3(0, 0, 64)));
+
+    chunks_.push_back(std::make_unique<Chunk>(17, glm::vec3(32, 0, -64)));
+    chunks_.push_back(std::make_unique<Chunk>(18, glm::vec3(64, 0, 32)));
+    chunks_.push_back(std::make_unique<Chunk>(19, glm::vec3(-64, 0, 32)));
+    chunks_.push_back(std::make_unique<Chunk>(20, glm::vec3(-32, 0, 64)));
+    chunks_.push_back(std::make_unique<Chunk>(21, glm::vec3(64, 0, -32)));
+    chunks_.push_back(std::make_unique<Chunk>(22, glm::vec3(32, 0, 64)));
+    chunks_.push_back(std::make_unique<Chunk>(23, glm::vec3(-32, 0, -64)));
+    chunks_.push_back(std::make_unique<Chunk>(24, glm::vec3(-64, 0, -32)));
+
     renderer_.bind();
 }
 
@@ -35,7 +54,10 @@ void World::draw(const float dt)
 
     // draw each chunks
     for (auto & chunkPtr : chunks_) {
-        // todo if chunk is in frustum then draw it
-        renderer_.draw(chunkPtr, view, projection, cameraPosition);
+        auto pos = chunkPtr->getOffset();
+        auto size = glm::vec3(Chunk::chunkWidth, Chunk::chunkHeight, Chunk::chunkDepth);
+        if (frustum_.CubeInFrustum(pos, size)) {
+            renderer_.draw(chunkPtr, view, projection, cameraPosition);
+        }
     }
 }

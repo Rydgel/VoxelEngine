@@ -25,7 +25,8 @@ set(HEADER_FILES
         graphics/mesher/SimpleMesher.hpp
         utils/SimplexNoise.hpp
         graphics/voxels/map/MapGenerator.hpp
-        graphics/voxels/map/MapGeneratorHeightmap.hpp)
+        graphics/voxels/map/MapGeneratorHeightmap.hpp
+        graphics/opengl/Texture.hpp)
 
 set(SOURCE_FILES
         Game.cpp
@@ -47,7 +48,8 @@ set(SOURCE_FILES
         graphics/voxels/Renderer.cpp
         graphics/mesher/SimpleMesher.cpp
         utils/SimplexNoise.cpp
-        graphics/voxels/map/MapGeneratorHeightmap.cpp)
+        graphics/voxels/map/MapGeneratorHeightmap.cpp
+        graphics/opengl/Texture.cpp)
 
 add_library(VoxelsEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
 
