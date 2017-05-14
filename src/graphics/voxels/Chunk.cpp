@@ -129,6 +129,7 @@ void Chunk::meshing()
     positionsBuffer_.setData(chunkMesh_.getPositions(), Usage::Static);
     normalsBuffer_.setData(chunkMesh_.getNormals(), Usage::Static);
     indicesBuffer_.setData(chunkMesh_.getIndices(), Usage::Static);
+    uvsBuffer_.setData(chunkMesh_.getUvs(), Usage::Static);
 
     glEnableVertexAttribArray(0);
     positionsBuffer_.bind();
@@ -138,9 +139,14 @@ void Chunk::meshing()
     normalsBuffer_.bind();
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*) 0);
 
+    glEnableVertexAttribArray(2);
+    uvsBuffer_.bind();
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*) 0);
+
     normalsBuffer_.unbind();
     positionsBuffer_.unbind();
     indicesBuffer_.unbind();
+    uvsBuffer_.unbind();
     vertexArray_.unbind();
 
     needMeshing = false;

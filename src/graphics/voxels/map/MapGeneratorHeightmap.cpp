@@ -14,7 +14,7 @@ void MapGeneratorHeightmap::makeChunk(Chunk & chunk)
     // Landscape generation
     float m_landscapeOctaves = 4.0f;
     float m_landscapePersistence = 0.3f;
-    float m_landscapeScale = 0.03f;
+    float m_landscapeScale = 0.02f;
     float m_mountainOctaves = 4.0f;
     float m_mountainPersistence = 0.3f;
     float m_mountainScale = 0.0075f;

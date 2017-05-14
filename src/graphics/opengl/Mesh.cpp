@@ -31,7 +31,7 @@ void Mesh::addNormal(const glm::vec3 normal)
     normals_.push_back(normal);
 }
 
-void Mesh::addUvs(const glm::vec2 uv)
+void Mesh::addUvs(const glm::vec3 uv)
 {
     uvs_.push_back(uv);
 }
@@ -56,7 +56,7 @@ const std::vector<glm::vec3> Mesh::getNormals() const
     return normals_;
 }
 
-const std::vector<glm::vec2> Mesh::getUvs() const
+const std::vector<glm::vec3> Mesh::getUvs() const
 {
     return uvs_;
 }

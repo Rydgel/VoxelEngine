@@ -50,7 +50,7 @@ private:
     VertexArray vertexArray_;
     ArrayBuffer positionsBuffer_;
     ArrayBuffer normalsBuffer_;
-    ArrayBuffer uvs_;
+    ArrayBuffer uvsBuffer_;
     IndexBuffer indicesBuffer_;
 };
 

@@ -23,13 +23,13 @@ struct Mesh
     void addPosition(glm::vec3 position);
     void addIndices(GLuint indice);
     void addNormal(glm::vec3 normal);
-    void addUvs(glm::vec2 uv);
+    void addUvs(glm::vec3 uv);
     void addColors(glm::vec3 color);
 
     const std::vector<glm::vec3> getPositions() const;
     const std::vector<GLuint> getIndices() const;
     const std::vector<glm::vec3> getNormals() const;
-    const std::vector<glm::vec2> getUvs() const;
+    const std::vector<glm::vec3> getUvs() const;
     const std::vector<glm::vec3> getColors() const;
 
 private:
@@ -37,7 +37,7 @@ private:
     std::vector<glm::vec3> positions_ {};
     std::vector<GLuint> indices_ {};
     std::vector<glm::vec3> normals_ {};
-    std::vector<glm::vec2> uvs_ {};
+    std::vector<glm::vec3> uvs_ {};
     std::vector<glm::vec3> colors_ {};
 };
 

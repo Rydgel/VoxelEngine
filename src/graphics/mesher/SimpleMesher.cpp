@@ -44,6 +44,12 @@ void SimpleMesher::addCube(int x, int y, int z)
         mesh_.addNormal({0, 0, -1});
         mesh_.addNormal({0, 0, -1});
 
+        int textureOffset = 0;
+        mesh_.addUvs({1, 1, textureOffset + 0});
+        mesh_.addUvs({0, 1, textureOffset + 0});
+        mesh_.addUvs({0, 0, textureOffset + 0});
+        mesh_.addUvs({1, 0, textureOffset + 0});
+
         mesh_.addIndices(indicesSize);
         mesh_.addIndices(indicesSize + 1);
         mesh_.addIndices(indicesSize + 2);
@@ -64,6 +70,12 @@ void SimpleMesher::addCube(int x, int y, int z)
         mesh_.addNormal({1, 0, 0});
         mesh_.addNormal({1, 0, 0});
         mesh_.addNormal({1, 0, 0});
+
+        int textureOffset = 0;
+        mesh_.addUvs({1, 1, textureOffset + 0});
+        mesh_.addUvs({0, 1, textureOffset + 0});
+        mesh_.addUvs({0, 0, textureOffset + 0});
+        mesh_.addUvs({1, 0, textureOffset + 0});
 
         mesh_.addIndices(indicesSize);
         mesh_.addIndices(indicesSize + 1);
@@ -86,6 +98,12 @@ void SimpleMesher::addCube(int x, int y, int z)
         mesh_.addNormal({0, 0, 1});
         mesh_.addNormal({0, 0, 1});
 
+        int textureOffset = 0;
+        mesh_.addUvs({1, 1, textureOffset + 0});
+        mesh_.addUvs({0, 1, textureOffset + 0});
+        mesh_.addUvs({0, 0, textureOffset + 0});
+        mesh_.addUvs({1, 0, textureOffset + 0});
+
         mesh_.addIndices(indicesSize);
         mesh_.addIndices(indicesSize + 1);
         mesh_.addIndices(indicesSize + 2);
@@ -106,6 +124,12 @@ void SimpleMesher::addCube(int x, int y, int z)
         mesh_.addNormal({-1, 0, 0});
         mesh_.addNormal({-1, 0, 0});
         mesh_.addNormal({-1, 0, 0});
+
+        int textureOffset = 0;
+        mesh_.addUvs({1, 1, textureOffset + 0});
+        mesh_.addUvs({0, 1, textureOffset + 0});
+        mesh_.addUvs({0, 0, textureOffset + 0});
+        mesh_.addUvs({1, 0, textureOffset + 0});
 
         mesh_.addIndices(indicesSize);
         mesh_.addIndices(indicesSize + 1);
@@ -128,6 +152,12 @@ void SimpleMesher::addCube(int x, int y, int z)
         mesh_.addNormal({0, 1, 0});
         mesh_.addNormal({0, 1, 0});
 
+        int textureOffset = 0;
+        mesh_.addUvs({1, 1, textureOffset + 2});
+        mesh_.addUvs({0, 1, textureOffset + 2});
+        mesh_.addUvs({0, 0, textureOffset + 2});
+        mesh_.addUvs({1, 0, textureOffset + 2});
+
         mesh_.addIndices(indicesSize);
         mesh_.addIndices(indicesSize + 1);
         mesh_.addIndices(indicesSize + 2);
@@ -148,6 +178,12 @@ void SimpleMesher::addCube(int x, int y, int z)
         mesh_.addNormal({0, -1, 0});
         mesh_.addNormal({0, -1, 0});
         mesh_.addNormal({0, -1, 0});
+
+        int textureOffset = 0;
+        mesh_.addUvs({1, 1, textureOffset + 1});
+        mesh_.addUvs({0, 1, textureOffset + 1});
+        mesh_.addUvs({0, 0, textureOffset + 1});
+        mesh_.addUvs({1, 0, textureOffset + 1});
 
         mesh_.addIndices(indicesSize);
         mesh_.addIndices(indicesSize + 1);

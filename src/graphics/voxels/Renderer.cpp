@@ -4,6 +4,20 @@
 Renderer::Renderer()
 : shader_("shaders/default.vert", "shaders/default.frag")
 {
+    // todo refactor that in a texture table to remove duplicates
+    std::vector<std::string> paths = {
+            "resources/blocks/grass_side.png",
+            "resources/blocks/dirt.png",
+            "resources/blocks/wool_colored_green.png",
+            "resources/blocks/dirt.png",
+            "resources/blocks/dirt.png",
+            "resources/blocks/dirt.png",
+            "resources/blocks/stone.png",
+            "resources/blocks/stone.png",
+            "resources/blocks/stone.png",
+    };
+
+    texture_.add(paths);
 }
 
 Renderer::~Renderer()
@@ -26,9 +40,7 @@ void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 pr
     shader_.setUniform("model", model);
     shader_.setUniform("view", view);
     shader_.setUniform("projection", projection);
-    // todo make this another way
-    shader_.setUniform("colorDraw", glm::vec3(0.02f, 0.47f, 0.18f));
-    glm::vec3 lightPosLoc(0, 10.0f, 0.0f);
+    glm::vec3 lightPosLoc(30.0f, 10.0f, 0.0f);
     glm::vec3 lightColorLoc(1.0f, 1.0f, 1.0f);
     shader_.setUniform("lightColor", lightColorLoc);
     shader_.setUniform("lightPos", lightPosLoc);
@@ -47,9 +59,11 @@ void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 pr
 void Renderer::bind()
 {
     shader_.bind();
+    texture_.bind();
 }
 
 void Renderer::unbind()
 {
     shader_.unbind();
+    texture_.unbind();
 }

@@ -2,7 +2,7 @@
 #define VOXELSENGINE_OPENGLERROR_HPP
 
 #include <iostream>
-#include <glad.h>
+#include <GLFW/glfw3.h>
 
 struct OpenGLError
 {
