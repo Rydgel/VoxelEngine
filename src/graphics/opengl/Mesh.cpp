@@ -1,21 +1,6 @@
 #include "Mesh.hpp"
 #include <ostream>
 
-std::ostream& operator<<(std::ostream& os, const Face face)
-{
-    switch(face)
-    {
-        case Face::front : return os << "front";
-        case Face::back  : return os << "back";
-        case Face::top   : return os << "top";
-        case Face::bottom: return os << "bottom";
-        case Face::right : return os << "right";
-        case Face::left  : return os << "left";
-    }
-    assert(false);
-    return os << "ERROR";
-}
-
 void Mesh::addPosition(const glm::vec3 position)
 {
     positions_.push_back(position);

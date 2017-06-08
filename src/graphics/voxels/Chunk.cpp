@@ -7,7 +7,6 @@ Chunk::Chunk(int id, glm::vec3 offset)
     offset_ = offset;
 
     mesherPtr_ = std::make_unique<SimpleMesher>(*this, chunkMesh_);
-    // todo replace by air
     voxels_.fill(std::make_shared<Voxel>(VoxelType::AIR));
     mapGen_ = std::make_unique<MapGeneratorHeightmap>(id);
     mapGen_->makeChunk(*this);
@@ -85,44 +84,6 @@ void Chunk::fill(Voxel voxel, int x, int y, int z)
 void Chunk::meshing()
 {
     mesherPtr_->meshing();
-
-    /**
-    // back
-    chunkMesh_.addPosition({1, 0, 0});
-    chunkMesh_.addPosition({0, 0, 0});
-    chunkMesh_.addPosition({0, 1, 0});
-    chunkMesh_.addPosition({1, 1, 0});
-
-    // right
-    chunkMesh_.addPosition({1, 0, 1});
-    chunkMesh_.addPosition({1, 0, 0});
-    chunkMesh_.addPosition({1, 1, 0});
-    chunkMesh_.addPosition({1, 1, 1});
-
-    // front
-    chunkMesh_.addPosition({0, 0, 1});
-    chunkMesh_.addPosition({1, 0, 1});
-    chunkMesh_.addPosition({1, 1, 1});
-    chunkMesh_.addPosition({0, 1, 1});
-
-    // left
-    chunkMesh_.addPosition({0, 0, 0});
-    chunkMesh_.addPosition({0, 0, 1});
-    chunkMesh_.addPosition({0, 1, 1});
-    chunkMesh_.addPosition({0, 1, 0});
-
-    // top
-    chunkMesh_.addPosition({0, 1, 1});
-    chunkMesh_.addPosition({1, 1, 1});
-    chunkMesh_.addPosition({1, 1, 0});
-    chunkMesh_.addPosition({0, 1, 0});
-
-    // bottom
-    chunkMesh_.addPosition({0, 0, 0});
-    chunkMesh_.addPosition({1, 0, 0});
-    chunkMesh_.addPosition({1, 0, 1});
-    chunkMesh_.addPosition({0, 0, 1}); */
-
 
     vertexArray_.bind();
 

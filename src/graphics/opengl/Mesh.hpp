@@ -6,18 +6,6 @@
 #include <glm/vec3.hpp>
 #include "VertexAttribute.hpp"
 
-enum Face : uint8_t
-{
-    front = 0,
-    back = 1,
-    top = 2,
-    bottom = 3,
-    right = 4,
-    left = 5,
-};
-
-std::ostream& operator<<(std::ostream&, Face);
-
 struct Mesh
 {
     void addPosition(glm::vec3 position);
