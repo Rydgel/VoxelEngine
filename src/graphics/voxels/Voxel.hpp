@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-enum VoxelType
+enum VoxelType : uint8_t
 {
     AIR = 0,
     GRASS = 1,

@@ -18,6 +18,8 @@ void main()
 {
     float fog_factor =  1.0 - (gl_FragCoord.z / gl_FragCoord.w) / 300.0;
     fog_factor = clamp(fog_factor, 0.0, 1.0);
+
+    /*
     // color = mix(fogColor, texture(ourTexture, TexCoord), fog_factor);
     //color = mix(fogColor, colorDraw, fog_factor);
     // color = texture(ourTexture, TexCoord);
@@ -41,5 +43,7 @@ void main()
     vec3 specular = specularStrength * spec * lightColor;
 
     vec4 result = vec4(ambient + diffuse + specular, 1.0f) * texture(ourTexture, TexCoord);
-    color = mix(fogColor, result, fog_factor);
+    color = mix(fogColor, result, fog_factor);*/
+    // color = texture(ourTexture, TexCoord);
+    color = mix(fogColor, texture(ourTexture, TexCoord), fog_factor);
 }

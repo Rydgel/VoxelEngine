@@ -26,7 +26,8 @@ set(HEADER_FILES
         utils/SimplexNoise.hpp
         graphics/voxels/map/MapGenerator.hpp
         graphics/voxels/map/MapGeneratorHeightmap.hpp
-        graphics/opengl/TextureArray.hpp)
+        graphics/opengl/TextureArray.hpp
+        graphics/opengl/Vertex.hpp)
 
 set(SOURCE_FILES
         Game.cpp
@@ -37,7 +38,6 @@ set(SOURCE_FILES
         graphics/opengl/Shader.cpp
         graphics/opengl/VertexArray.cpp
         graphics/opengl/Buffer.cpp
-        graphics/opengl/Mesh.cpp
         graphics/opengl/Frustum.cpp
         graphics/Camera.cpp
         graphics/InputManager.cpp

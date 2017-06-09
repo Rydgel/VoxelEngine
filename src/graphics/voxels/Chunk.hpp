@@ -20,12 +20,13 @@ using VoxelPtr = std::shared_ptr<Voxel>;
 
 struct Chunk
 {
-    auto static constexpr chunkWidth = 32;
+    auto static constexpr chunkWidth = 64;
     auto static constexpr chunkHeight = 32;
-    auto static constexpr chunkDepth = 32;
+    auto static constexpr chunkDepth = 64;
     auto static constexpr chunkSize = chunkWidth * chunkHeight * chunkDepth;
 
     bool needMeshing = true;
+    int indicesSize = 0;
 
     Chunk(int id, glm::vec3 offset);
     const glm::vec3 & getOffset() const;
@@ -48,9 +49,7 @@ private:
     Mesh chunkMesh_;
     std::unique_ptr<IMesher> mesherPtr_;
     VertexArray vertexArray_;
-    ArrayBuffer positionsBuffer_;
-    ArrayBuffer normalsBuffer_;
-    ArrayBuffer uvsBuffer_;
+    ArrayBuffer verticesBuffer_;
     IndexBuffer indicesBuffer_;
 };
 

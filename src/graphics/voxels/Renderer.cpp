@@ -40,11 +40,11 @@ void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 pr
     shader_.setUniform("model", model);
     shader_.setUniform("view", view);
     shader_.setUniform("projection", projection);
-    glm::vec3 lightPosLoc(30.0f, 10.0f, 0.0f);
-    glm::vec3 lightColorLoc(1.0f, 1.0f, 1.0f);
-    shader_.setUniform("lightColor", lightColorLoc);
-    shader_.setUniform("lightPos", lightPosLoc);
-    shader_.setUniform("viewPos", cameraPosition);
+    // glm::vec3 lightPosLoc(30.0f, 10.0f, 0.0f);
+    // glm::vec3 lightColorLoc(1.0f, 1.0f, 1.0f);
+    // shader_.setUniform("lightColor", lightColorLoc);
+    // shader_.setUniform("lightPos", lightPosLoc);
+    // shader_.setUniform("viewPos", cameraPosition);
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     chunk->draw();
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

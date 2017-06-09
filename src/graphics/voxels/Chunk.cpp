@@ -87,27 +87,27 @@ void Chunk::meshing()
 
     vertexArray_.bind();
 
-    positionsBuffer_.setData(chunkMesh_.getPositions(), Usage::Static);
-    normalsBuffer_.setData(chunkMesh_.getNormals(), Usage::Static);
-    indicesBuffer_.setData(chunkMesh_.getIndices(), Usage::Static);
-    uvsBuffer_.setData(chunkMesh_.getUvs(), Usage::Static);
+    verticesBuffer_.setData(chunkMesh_.vertices, Usage::Static);
+    // reduce memory usage
+    chunkMesh_.vertices.clear();
+    chunkMesh_.vertices.shrink_to_fit();
 
+    indicesBuffer_.setData(chunkMesh_.indices, Usage::Static);
+    indicesSize = static_cast<int>(chunkMesh_.indices.size());
+    // reduce memory usage
+    chunkMesh_.indices.clear();
+    chunkMesh_.indices.shrink_to_fit();
+
+    verticesBuffer_.bind();
     glEnableVertexAttribArray(0);
-    positionsBuffer_.bind();
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*) 0);
-
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) 0);
     glEnableVertexAttribArray(1);
-    normalsBuffer_.bind();
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*) 0);
-
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, normals));
     glEnableVertexAttribArray(2);
-    uvsBuffer_.bind();
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*) 0);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, uvs));
 
-    normalsBuffer_.unbind();
-    positionsBuffer_.unbind();
+    verticesBuffer_.unbind();
     indicesBuffer_.unbind();
-    uvsBuffer_.unbind();
     vertexArray_.unbind();
 
     needMeshing = false;
@@ -117,15 +117,11 @@ void Chunk::bind()
 {
     vertexArray_.bind();
     indicesBuffer_.bind();
-    // normalsBuffer_.bind();
-    // positionsBuffer_.bind();
 }
 
 void Chunk::unbind()
 {
     indicesBuffer_.unbind();
-    // normalsBuffer_.unbind();
-    // positionsBuffer_.unbind();
     vertexArray_.unbind();
 }
 
@@ -136,8 +132,6 @@ void Chunk::draw()
     }
 
     bind();
-    auto indicesSize = static_cast<GLsizei>(chunkMesh_.getIndices().size());
     glDrawElements(GL_TRIANGLES, indicesSize, GL_UNSIGNED_INT, 0);
-    // glDrawArrays(GL_TRIANGLES, 0, chunkMesh_.getPositions().size());
     unbind();
 }
