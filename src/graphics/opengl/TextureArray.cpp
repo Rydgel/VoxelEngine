@@ -15,7 +15,7 @@ TextureArray::~TextureArray()
 void TextureArray::add(std::vector<std::string> paths)
 {
     bind();
-    int mipLevelCount = 3;
+    int mipLevelCount = 4;
     GLsizei layerCount = (GLsizei) paths.size();
     // glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_RGBA, 16, 16, layerCount, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
     glTexStorage3D(GL_TEXTURE_2D_ARRAY, mipLevelCount, GL_RGBA8, 16, 16,  layerCount);

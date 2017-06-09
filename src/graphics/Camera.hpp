@@ -10,7 +10,7 @@
 // Default camera values
 const GLfloat YAW = -90.0f;
 const GLfloat PITCH = 0.0f;
-const GLfloat SPEED = 18.0f;
+const GLfloat SPEED = 72.0f;
 const GLfloat SENSITIVITY = 1.0f;
 const GLfloat ZOOM = 45.0f;
 

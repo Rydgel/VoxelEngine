@@ -45,7 +45,7 @@ Window::Window(InputManager & im, const int width, const int height, const char 
     // alpha support for textures
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_MULTISAMPLE);
+    // glEnable(GL_MULTISAMPLE);
 
     hideCursor();
 
