@@ -10,13 +10,13 @@ struct Timer
     using MilliSeconds = std::chrono::milliseconds;
 
     void init();
-    const double getTime();
-    const float getDelta();
+    double getTime();
+    float getDelta();
     void updateFPS();
     void updateUPS();
     void update();
-    const int getFPS();
-    const int getUPS();
+    int getFPS();
+    int getUPS();
 
 private:
 

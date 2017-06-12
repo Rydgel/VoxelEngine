@@ -2,7 +2,7 @@
 #include <states/PlayState.hpp>
 #include <Game.hpp>
 
-int main(int argc, char **argv)
+int main()
 {
     Game game;
     game.pushState(std::make_unique<PlayState>(game));

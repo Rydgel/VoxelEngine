@@ -94,7 +94,7 @@ void Camera::processMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean co
     }
 }
 
-const GLfloat Camera::getZoom()
+GLfloat Camera::getZoom()
 {
     return zoom_;
 }

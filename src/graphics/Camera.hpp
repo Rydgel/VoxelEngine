@@ -22,7 +22,7 @@ struct Camera
            GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch);
 
     void update(float dt);
-    const GLfloat getZoom();
+    GLfloat getZoom();
     const glm::vec3 getPosition();
     const glm::mat4 getViewMatrix();
 

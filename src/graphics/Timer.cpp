@@ -10,14 +10,14 @@ void Timer::init()
     upsCount_ = 0;
 }
 
-const double Timer::getTime()
+double Timer::getTime()
 {
     const auto duration = Clock::now().time_since_epoch();
     const auto getMs = std::chrono::duration_cast<MilliSeconds>(duration).count();
     return getMs / 1000.0;
 }
 
-const float Timer::getDelta()
+float Timer::getDelta()
 {
     const double time = getTime();
     const float delta = static_cast<float>(time - lastLoopTime_);
@@ -49,12 +49,12 @@ void Timer::update()
     }
 }
 
-const int Timer::getFPS()
+int Timer::getFPS()
 {
     return fps_ > 0 ? fps_ : fpsCount_;
 }
 
-const int Timer::getUPS()
+int Timer::getUPS()
 {
     return ups_ > 0 ? ups_ : upsCount_;
 }

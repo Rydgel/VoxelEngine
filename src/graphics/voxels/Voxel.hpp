@@ -11,7 +11,7 @@ enum VoxelType : uint8_t
 
 struct Voxel
 {
-    explicit Voxel();
+    Voxel();
     explicit Voxel(VoxelType type);
     VoxelType & getType();
     void setType(VoxelType type);

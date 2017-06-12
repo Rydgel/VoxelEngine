@@ -18,7 +18,7 @@ void MapGeneratorHeightmap::makeChunk(Chunk & chunk)
     float m_mountainOctaves = 4.0f;
     float m_mountainPersistence = 0.3f;
     float m_mountainScale = 0.0275f;
-    float m_mountainMultiplier = 1.0f;
+    float m_mountainMultiplier = 0.8f;
 
     auto offset = chunk.getOffset();
     for (int x = 0; x < Chunk::chunkWidth; x++) {
