@@ -4,15 +4,16 @@
 #include <graphics/Window.hpp>
 #include <graphics/Timer.hpp>
 #include <stack>
-#include <optional.hpp>
+#include <experimental/optional>
 
 struct IGameState;
 
-using WindowPtr = std::unique_ptr<Window>;
-using GameStatePtr = std::unique_ptr<IGameState>;
-using GameStateStack = std::stack<GameStatePtr>;
-
 namespace boost = std::experimental;
+
+using WindowPtr = std::unique_ptr<Window>;
+using GameStatePtr = std::shared_ptr<IGameState>;
+using GameStateStack = std::stack<GameStatePtr>;
+using MaybeGameState = boost::optional<GameStatePtr>;
 
 struct Game
 {
@@ -26,7 +27,7 @@ struct Game
     void pushState(GameStatePtr state);
     void popState();
     void changeState(GameStatePtr state);
-    boost::optional<GameStatePtr &> peekState();
+    MaybeGameState peekState();
     void gameLoop();
     WindowPtr & getWindowRef();
     InputManager & getInputManager();

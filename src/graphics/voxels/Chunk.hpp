@@ -7,7 +7,7 @@
 #include <graphics/opengl/VertexArray.hpp>
 #include <graphics/opengl/ArrayBuffer.hpp>
 #include <graphics/opengl/IndexBuffer.hpp>
-#include <optional.hpp>
+#include <experimental/optional>
 #include <graphics/mesher/IMesher.hpp>
 #include <graphics/voxels/map/MapGeneratorHeightmap.hpp>
 #include "Voxel.hpp"
@@ -15,8 +15,8 @@
 class MapGeneratorHeightmap;
 
 namespace boost = std::experimental;
-using MaybeVoxel = boost::optional<std::shared_ptr<Voxel>>;
 using VoxelPtr = std::shared_ptr<Voxel>;
+using MaybeVoxel = boost::optional<VoxelPtr>;
 
 struct Chunk
 {

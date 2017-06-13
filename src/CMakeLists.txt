@@ -79,9 +79,6 @@ endif()
 # add_subdirectory(lib/glm-0.9.8.4)
 include_directories(lib/glm-0.9.8.4)
 
-# loading optional
-include_directories(lib/optional)
-
 # loading stb_image
 add_subdirectory(lib/stb_image-2.14)
 include_directories(lib/stb_image-2.14)

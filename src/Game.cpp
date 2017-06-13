@@ -39,12 +39,12 @@ void Game::changeState(GameStatePtr state)
     pushState(std::move(state));
 }
 
-boost::optional<GameStatePtr &> Game::peekState()
+MaybeGameState Game::peekState()
 {
     if (states_.empty())
         return boost::nullopt;
     auto & currentState = states_.top();
-    return boost::optional<GameStatePtr &>(currentState);
+    return currentState;
 }
 
 void Game::gameLoop()
@@ -54,7 +54,7 @@ void Game::gameLoop()
         const float dt = timer_.getDelta();
 
         auto currentState = peekState();
-        if (!currentState.has_value())
+        if (!currentState)
             continue;
 
         // todo make a new class to handle custom GUI windows when needed
@@ -62,17 +62,17 @@ void Game::gameLoop()
 
         // Check and call events
         windowPtr_->pollEvents();
-        currentState.value()->events(dt);
+        (*currentState)->events(dt);
 
         /* Update game and timer UPS */
-        currentState.value()->update(dt);
+        (*currentState)->update(dt);
         timer_.updateUPS();
 
         /* Render game and update timer FPS */
         glClearColor(0.73f, 0.82f, 0.89f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        currentState.value()->draw(dt);
+        (*currentState)->draw(dt);
 
         timer_.updateFPS();
 
