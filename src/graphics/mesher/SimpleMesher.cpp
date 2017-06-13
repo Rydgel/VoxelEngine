@@ -104,9 +104,7 @@ void SimpleMesher::addCube(int x, int y, int z)
         auto [xn, yn, zn] = normal;
         // We add a face only if it touches a transparent element
         auto indicesSize = static_cast<GLuint>(mesh_.vertices.size());
-        int i = 10;
         if (chunk_.isAir(x + xn, y + yn, z + zn)) {
-            i ++;
             for (auto [off1, off2] : verticesProps) {
                 auto [off1x, off1y, off1z] = off1;
                 auto [off2x, off2y, off2z] = off2;
