@@ -127,21 +127,21 @@ void Camera::updateCameraVectors()
 void Camera::updateMouseCoord(const float dt)
 {
     auto mousePos = inputManager_.getMousePosition();
-    auto xpos = mousePos.xPos;
-    auto ypos = mousePos.yPos;
+    auto xpos = static_cast<float>(mousePos.xPos);
+    auto ypos = static_cast<float>(mousePos.yPos);
 
     if (firstMouseMove_) {
-        lastX_ = (float) xpos;
-        lastY_ = (float) ypos;
+        lastX_ = xpos;
+        lastY_ = ypos;
         firstMouseMove_ = false;
     }
 
-    GLfloat xoffset = (float) xpos - lastX_;
+    GLfloat xoffset = xpos - lastX_;
     // Reversed since y-coordinates go from bottom to left
-    GLfloat yoffset = lastY_ - (float) ypos;
+    GLfloat yoffset = lastY_ - ypos;
 
-    lastX_ = (float) xpos;
-    lastY_ = (float) ypos;
+    lastX_ = xpos;
+    lastY_ = ypos;
 
     processMouseMovement(xoffset, yoffset);
 }

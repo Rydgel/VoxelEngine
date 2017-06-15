@@ -42,7 +42,7 @@ void Game::changeState(GameStatePtr state)
 MaybeGameState Game::peekState()
 {
     if (states_.empty())
-        return boost::nullopt;
+        return std::nullopt;
     auto & currentState = states_.top();
     return currentState;
 }
@@ -62,17 +62,17 @@ void Game::gameLoop()
 
         // Check and call events
         windowPtr_->pollEvents();
-        (*currentState)->events(dt);
+        currentState.value()->events(dt);
 
         /* Update game and timer UPS */
-        (*currentState)->update(dt);
+        currentState.value()->update(dt);
         timer_.updateUPS();
 
         /* Render game and update timer FPS */
         glClearColor(0.73f, 0.82f, 0.89f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        (*currentState)->draw(dt);
+        currentState.value()->draw(dt);
 
         timer_.updateFPS();
 

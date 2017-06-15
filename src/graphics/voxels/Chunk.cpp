@@ -20,19 +20,19 @@ const glm::vec3 & Chunk::getOffset() const
 const MaybeVoxel Chunk::getVoxel(int x, int y, int z) const
 {
     if (x < 0 || x >= Chunk::chunkWidth) {
-        return boost::nullopt;
+        return std::nullopt;
     }
     if (y < 0 || y >= Chunk::chunkHeight) {
-        return boost::nullopt;
+        return std::nullopt;
     }
     if (z < 0 || z >= Chunk::chunkDepth) {
-        return boost::nullopt;
+        return std::nullopt;
     }
 
     auto index = x + y * Chunk::chunkWidth + z * Chunk::chunkWidth * Chunk::chunkHeight;
 
     if (index < 0 || index >= Chunk::chunkSize) {
-        return boost::nullopt;
+        return std::nullopt;
     }
 
     return voxels_[index];
@@ -100,7 +100,7 @@ void Chunk::meshing()
 
     verticesBuffer_.bind();
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), nullptr);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, normals));
     glEnableVertexAttribArray(2);
@@ -132,6 +132,6 @@ void Chunk::draw()
     }
 
     bind();
-    glDrawElements(GL_TRIANGLES, indicesSize, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, indicesSize, GL_UNSIGNED_INT, nullptr);
     unbind();
 }

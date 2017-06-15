@@ -3,7 +3,7 @@ project(VoxelsEngine)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z -pedantic-errors -Werr -Wall -Wextra -O3 -ffast-math")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z -O3 -ffast-math -pedantic-errors -Wall -Wno-missing-braces -Wmissing-field-initializers")
 
 include(cotire)
 

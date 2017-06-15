@@ -4,16 +4,14 @@
 #include <graphics/Window.hpp>
 #include <graphics/Timer.hpp>
 #include <stack>
-#include <experimental/optional>
+#include <optional>
 
 struct IGameState;
-
-namespace boost = std::experimental;
 
 using WindowPtr = std::unique_ptr<Window>;
 using GameStatePtr = std::shared_ptr<IGameState>;
 using GameStateStack = std::stack<GameStatePtr>;
-using MaybeGameState = boost::optional<GameStatePtr>;
+using MaybeGameState = std::optional<GameStatePtr>;
 
 struct Game
 {

@@ -1,7 +1,7 @@
 #include <graphics/voxels/Chunk.hpp>
 #include "SimpleMesher.hpp"
 
-static Point3D convertGLMToPoint(glm::vec3 vec)
+inline static Point3D convertGLMToPoint(glm::vec3 vec)
 {
     return { vec.x, vec.y, vec.z };
 }
@@ -84,11 +84,9 @@ void SimpleMesher::meshing()
         for (int y = 0; y < Chunk::chunkHeight; y ++) {
             for (int z = 0; z < Chunk::chunkDepth; z ++) {
                 // block culling
-                if (chunk_.voxelIsHidden(x, y, z)) {
-                    continue;
+                if (!chunk_.voxelIsHidden(x, y, z)) {
+                    addCube(x, y, z);
                 }
-
-                addCube(x, y, z);
             }
         }
     }
@@ -103,7 +101,7 @@ void SimpleMesher::addCube(int x, int y, int z)
     for (auto [normal, verticesProps] : meshingProperties) {
         auto [xn, yn, zn] = normal;
         // We add a face only if it touches a transparent element
-        auto indicesSize = static_cast<GLuint>(mesh_.vertices.size());
+        auto indicesOff = mesh_.verticesSize();
         if (chunk_.isAir(x + xn, y + yn, z + zn)) {
             for (auto [off1, off2] : verticesProps) {
                 auto [off1x, off1y, off1z] = off1;
@@ -119,7 +117,7 @@ void SimpleMesher::addCube(int x, int y, int z)
             }
 
             for (auto dSize : { 0, 1, 2, 2, 3, 0 })
-                mesh_.indices.push_back(indicesSize + dSize);
+                mesh_.indices.push_back(indicesOff + dSize);
         }
     }
 }

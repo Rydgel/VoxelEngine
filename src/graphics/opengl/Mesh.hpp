@@ -9,6 +9,11 @@ struct Mesh
 {
     std::vector<Vertex> vertices {};
     std::vector<GLuint> indices {};
+
+    inline GLuint verticesSize() const
+    {
+        return static_cast<GLuint>(vertices.size());
+    }
 };
 
 
