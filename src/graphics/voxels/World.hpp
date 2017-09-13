@@ -8,7 +8,7 @@
 #include "Chunk.hpp"
 #include "Renderer.hpp"
 
-using ChunkPtr = std::unique_ptr<Chunk>;
+using ChunkPtr = std::shared_ptr<Chunk>;
 
 struct World
 {

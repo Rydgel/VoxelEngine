@@ -31,7 +31,7 @@ void Renderer::clear()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Renderer::draw(std::unique_ptr<Chunk> & chunk, glm::mat4 view, glm::mat4 projection, glm::vec3 cameraPosition)
+void Renderer::draw(std::shared_ptr<Chunk> chunk, glm::mat4 view, glm::mat4 projection, glm::vec3 cameraPosition)
 {
     // todo calculate position with chunk offset
     auto pos = glm::vec3(0.0f, 0.0f, 0.0f);

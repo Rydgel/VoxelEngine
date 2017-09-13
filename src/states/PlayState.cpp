@@ -3,7 +3,7 @@
 
 PlayState::PlayState(Game & game)
 : IGameState(game)
-, windowPtr_(game_.getWindowRef())
+, windowPtr_(game_.getWindow())
 , inputManager_(game_.getInputManager())
 , world_(game_)
 {

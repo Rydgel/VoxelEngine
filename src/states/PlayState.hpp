@@ -8,13 +8,13 @@
 struct PlayState : public IGameState
 {
     explicit PlayState(Game & game);
-    virtual void events(float dt);
-    virtual void update(float dt);
-    virtual void draw(float dt);
+    void events(float dt) override;
+    void update(float dt) override;
+    void draw(float dt) override;
 
 private:
 
-    WindowPtr & windowPtr_;
+    WindowPtr windowPtr_;
     InputManager & inputManager_;
     World world_;
 };

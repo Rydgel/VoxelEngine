@@ -16,11 +16,11 @@ void TextureArray::add(std::vector<std::string> paths)
 {
     bind();
     int mipLevelCount = 4;
-    GLsizei layerCount = (GLsizei) paths.size();
+    auto layerCount = static_cast<GLsizei>(paths.size());
     // glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_RGBA, 16, 16, layerCount, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
     glTexStorage3D(GL_TEXTURE_2D_ARRAY, mipLevelCount, GL_RGBA8, 16, 16,  layerCount);
 
-    for (auto &path : paths) {
+    for (auto & path : paths) {
         int width, height, nbChannels;
         unsigned char* image = stbi_load(path.c_str(), &width, &height, &nbChannels, STBI_rgb_alpha);
         if (image == nullptr) throw(std::string("Failed to load texture"));
@@ -34,7 +34,8 @@ void TextureArray::add(std::vector<std::string> paths)
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, 16.0f);
+    // todo need to test for driver support
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, 16.0f);
     unbind();
 }
 

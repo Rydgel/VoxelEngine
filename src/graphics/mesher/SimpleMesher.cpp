@@ -15,7 +15,7 @@ SimpleMesher::SimpleMesher(Chunk & chunk, Mesh & mesh)
     oz_ = chunkOffset_.z;
 }
 
-constexpr std::array<MeshProperty, 6> meshingProperties = {
+constexpr std::array<MeshProperty, 6> meshingProperties = { // NOLINT
         // Back
         MeshProperty {
                 { 0, 0, -1 },

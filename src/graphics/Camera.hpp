@@ -12,7 +12,8 @@ const GLfloat YAW = -90.0f;
 const GLfloat PITCH = 0.0f;
 const GLfloat SPEED = 72.0f;
 const GLfloat SENSITIVITY = 1.0f;
-const GLfloat ZOOM = 45.0f;
+// todo rename fov
+const GLfloat ZOOM = 3.14f / 4.0f;
 
 struct Camera
 {

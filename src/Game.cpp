@@ -6,7 +6,7 @@
 
 Game::Game()
 {
-    windowPtr_ = std::make_unique<Window>(inputManager_, windowWidth_, windowHeight_, windowTitle_);
+    windowPtr_ = std::make_shared<Window>(inputManager_, windowWidth_, windowHeight_, windowTitle_);
     timer_.init();
 }
 
@@ -91,7 +91,7 @@ void Game::gameLoop()
     }
 }
 
-WindowPtr & Game::getWindowRef()
+WindowPtr Game::getWindow()
 {
     return windowPtr_;
 }

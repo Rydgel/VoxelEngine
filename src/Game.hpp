@@ -8,7 +8,7 @@
 
 struct IGameState;
 
-using WindowPtr = std::unique_ptr<Window>;
+using WindowPtr = std::shared_ptr<Window>;
 using GameStatePtr = std::shared_ptr<IGameState>;
 using GameStateStack = std::stack<GameStatePtr>;
 using MaybeGameState = std::optional<GameStatePtr>;
@@ -27,7 +27,7 @@ struct Game
     void changeState(GameStatePtr state);
     MaybeGameState peekState();
     void gameLoop();
-    WindowPtr & getWindowRef();
+    WindowPtr getWindow();
     InputManager & getInputManager();
 
 private:
