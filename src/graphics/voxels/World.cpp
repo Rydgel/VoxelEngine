@@ -32,12 +32,12 @@ World::World(Game & game)
     chunks_.push_back(std::make_shared<Chunk>(23, glm::vec3(-64, 0, -128)));
     chunks_.push_back(std::make_shared<Chunk>(24, glm::vec3(-128, 0, -64)));
 
-    renderer_.bind();
+    chunkRenderer_.bind();
 }
 
 World::~World()
 {
-    renderer_.unbind();
+    chunkRenderer_.unbind();
 }
 
 void World::update(const float dt)
@@ -57,7 +57,7 @@ void World::draw(const float dt)
         auto pos = chunkPtr->getOffset();
         auto size = glm::vec3(Chunk::chunkWidth, Chunk::chunkHeight, Chunk::chunkDepth);
         if (frustum_.CubeInFrustum(pos, size)) {
-            renderer_.draw(chunkPtr, view, projection, cameraPosition);
+            chunkRenderer_.draw(chunkPtr, view, projection, cameraPosition);
         }
     }
 }

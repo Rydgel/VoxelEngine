@@ -1,5 +1,5 @@
 #include <graphics/opengl/OpenGLError.hpp>
-#include "Renderer.hpp"
+#include "ChunkRenderer.hpp"
 
 Renderer::Renderer()
 : shader_("shaders/default.vert", "shaders/default.frag")

@@ -20,7 +20,7 @@ set(HEADER_FILES
         graphics/voxels/Chunk.hpp
         graphics/voxels/World.hpp
         states/IGameState.hpp
-        graphics/voxels/Renderer.hpp
+        graphics/voxels/ChunkRenderer.hpp
         graphics/mesher/IMesher.hpp
         graphics/mesher/SimpleMesher.hpp
         utils/SimplexNoise.hpp
@@ -45,7 +45,7 @@ set(SOURCE_FILES
         graphics/voxels/Chunk.cpp
         graphics/voxels/World.cpp
         states/PlayState.cpp
-        graphics/voxels/Renderer.cpp
+        graphics/voxels/ChunkRenderer.cpp
         graphics/mesher/SimpleMesher.cpp
         utils/SimplexNoise.cpp
         graphics/voxels/map/MapGeneratorHeightmap.cpp
