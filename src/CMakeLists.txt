@@ -16,16 +16,16 @@ set(HEADER_FILES
         graphics/opengl/Frustum.hpp
         graphics/Camera.hpp
         graphics/InputManager.hpp
-        graphics/voxels/Voxel.hpp
-        graphics/voxels/Chunk.hpp
-        graphics/voxels/World.hpp
+        graphics/models/Voxel.hpp
+        graphics/models/Chunk.hpp
+        graphics/models/World.hpp
         states/IGameState.hpp
-        graphics/voxels/ChunkRenderer.hpp
+        graphics/renderer/ChunkRenderer.hpp
         graphics/mesher/IMesher.hpp
         graphics/mesher/SimpleMesher.hpp
         utils/SimplexNoise.hpp
-        graphics/voxels/map/MapGenerator.hpp
-        graphics/voxels/map/MapGeneratorHeightmap.hpp
+        graphics/models/map/MapGenerator.hpp
+        graphics/models/map/MapGeneratorHeightmap.hpp
         graphics/opengl/TextureArray.hpp
         graphics/opengl/Vertex.hpp)
 
@@ -41,14 +41,14 @@ set(SOURCE_FILES
         graphics/opengl/Frustum.cpp
         graphics/Camera.cpp
         graphics/InputManager.cpp
-        graphics/voxels/Voxel.cpp
-        graphics/voxels/Chunk.cpp
-        graphics/voxels/World.cpp
+        graphics/models/Voxel.cpp
+        graphics/models/Chunk.cpp
+        graphics/models/World.cpp
         states/PlayState.cpp
-        graphics/voxels/ChunkRenderer.cpp
+        graphics/renderer/ChunkRenderer.cpp
         graphics/mesher/SimpleMesher.cpp
         utils/SimplexNoise.cpp
-        graphics/voxels/map/MapGeneratorHeightmap.cpp
+        graphics/models/map/MapGeneratorHeightmap.cpp
         graphics/opengl/TextureArray.cpp)
 
 add_library(VoxelsEngine STATIC ${SOURCE_FILES} ${HEADER_FILES})
@@ -97,7 +97,7 @@ target_link_libraries(VoxelsEngine ImGui)
 
 # loading OpenAL
 find_package(OpenAL REQUIRED)
-if (OPENGL_FOUND)
+if (OPENAL_FOUND)
     include_directories(${OPENAL_INCLUDE_DIR})
     target_link_libraries(VoxelsEngine ${OPENAL_LIBRARY})
 endif()

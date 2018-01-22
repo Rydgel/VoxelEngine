@@ -9,7 +9,7 @@
 #include <graphics/opengl/IndexBuffer.hpp>
 #include <optional>
 #include <graphics/mesher/IMesher.hpp>
-#include <graphics/voxels/map/MapGeneratorHeightmap.hpp>
+#include <graphics/models/map/MapGeneratorHeightmap.hpp>
 #include "Voxel.hpp"
 
 class MapGeneratorHeightmap;
@@ -43,7 +43,6 @@ private:
     int chunkId_;
     glm::vec3 offset_;
     std::array<VoxelPtr, chunkSize> voxels_ {};
-    std::unique_ptr<MapGeneratorHeightmap> mapGen_;
 
     Mesh chunkMesh_;
     std::unique_ptr<IMesher> mesherPtr_;

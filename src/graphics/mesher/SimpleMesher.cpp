@@ -1,4 +1,4 @@
-#include <graphics/voxels/Chunk.hpp>
+#include <graphics/models/Chunk.hpp>
 #include "SimpleMesher.hpp"
 
 inline static Point3D convertGLMToPoint(glm::vec3 vec)

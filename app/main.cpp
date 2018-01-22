@@ -5,6 +5,6 @@
 int main()
 {
     Game game;
-    game.pushState(std::make_unique<PlayState>(game));
+    game.pushState(std::make_shared<PlayState>(game));
     game.gameLoop();
 }

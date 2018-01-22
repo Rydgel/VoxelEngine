@@ -1,7 +1,7 @@
 #include <graphics/opengl/OpenGLError.hpp>
 #include "ChunkRenderer.hpp"
 
-Renderer::Renderer()
+ChunkRenderer::ChunkRenderer()
 : shader_("shaders/default.vert", "shaders/default.frag")
 {
     // todo refactor that in a texture table to remove duplicates
@@ -20,20 +20,13 @@ Renderer::Renderer()
     texture_.add(paths);
 }
 
-Renderer::~Renderer()
+ChunkRenderer::~ChunkRenderer()
 {
     unbind();
 }
 
-void Renderer::clear()
+void ChunkRenderer::draw(std::shared_ptr<Chunk> chunk, glm::mat4 view, glm::mat4 projection, glm::vec3 cameraPosition)
 {
-    glClearColor(0.73f, 0.82f, 0.89f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-void Renderer::draw(std::shared_ptr<Chunk> chunk, glm::mat4 view, glm::mat4 projection, glm::vec3 cameraPosition)
-{
-    // todo calculate position with chunk offset
     auto pos = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::mat4 model;
     model = glm::translate(model, pos);
@@ -56,13 +49,13 @@ void Renderer::draw(std::shared_ptr<Chunk> chunk, glm::mat4 view, glm::mat4 proj
     // errorGL.isOpenGLError();
 }
 
-void Renderer::bind()
+void ChunkRenderer::bind()
 {
     shader_.bind();
     texture_.bind();
 }
 
-void Renderer::unbind()
+void ChunkRenderer::unbind()
 {
     shader_.unbind();
     texture_.unbind();

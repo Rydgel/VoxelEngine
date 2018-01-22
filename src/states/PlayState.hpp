@@ -1,7 +1,7 @@
 #ifndef VOXELSENGINE_PLAYSTATE_HPP
 #define VOXELSENGINE_PLAYSTATE_HPP
 
-#include <graphics/voxels/World.hpp>
+#include <graphics/models/World.hpp>
 #include <Game.hpp>
 #include "IGameState.hpp"
 

@@ -8,8 +8,10 @@ Chunk::Chunk(int id, glm::vec3 offset)
 
     mesherPtr_ = std::make_unique<SimpleMesher>(*this, chunkMesh_);
     voxels_.fill(std::make_shared<Voxel>(VoxelType::AIR));
-    mapGen_ = std::make_unique<MapGeneratorHeightmap>(id);
-    mapGen_->makeChunk(*this);
+
+    // generating terrain
+    MapGeneratorHeightmap mapGen_(id);
+    mapGen_.makeChunk(*this);
 }
 
 const glm::vec3 & Chunk::getOffset() const

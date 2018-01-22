@@ -6,7 +6,7 @@
 #include <graphics/Camera.hpp>
 #include <graphics/opengl/Frustum.hpp>
 #include "Chunk.hpp"
-#include "ChunkRenderer.hpp"
+#include "graphics/renderer/ChunkRenderer.hpp"
 
 using ChunkPtr = std::shared_ptr<Chunk>;
 
@@ -23,7 +23,7 @@ private:
     Game & game_;
     Camera camera_;
     Frustum frustum_;
-    Renderer chunkRenderer_;
+    ChunkRenderer chunkRenderer_;
     std::vector<ChunkPtr> chunks_ = {};
 };
 
