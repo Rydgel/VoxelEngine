@@ -91,8 +91,8 @@ void Frustum::CalculateFrustum(const glm::mat4 & projMatrix, const glm::mat4 & v
 
 bool Frustum::PointInFrustum(float x, float y, float z)
 {
-    for (int i = 0; i < 6; i++) {
-        if (frustum_[i][A] * x + frustum_[i][B] * y + frustum_[i][C] * z + frustum_[i][D] <= 0) {
+    for (auto & i : frustum_) {
+        if (i[A] * x + i[B] * y + i[C] * z + i[D] <= 0) {
             return false;
         }
     }
@@ -101,8 +101,8 @@ bool Frustum::PointInFrustum(float x, float y, float z)
 
 bool Frustum::SphereInFrustum(float x, float y, float z, float radius)
 {
-    for (int i = 0; i < 6; i++) {
-        if (frustum_[i][A] * x + frustum_[i][B] * y + frustum_[i][C] * z + frustum_[i][D] <= -radius) {
+    for (auto & i : frustum_) {
+        if (i[A] * x + i[B] * y + i[C] * z + i[D] <= -radius) {
             return false;
         }
     }
@@ -111,22 +111,22 @@ bool Frustum::SphereInFrustum(float x, float y, float z, float radius)
 
 bool Frustum::CubeInFrustum(float x, float y, float z, float width, float height, float depth)
 {
-    for (int i = 0; i < 6; i++) {
-        if (frustum_[i][A] * (x - width) + frustum_[i][B] * (y - height) + frustum_[i][C] * (z - depth) + frustum_[i][D] > 0)
+    for (auto &i : frustum_) {
+        if (i[A] * (x - width) + i[B] * (y - height) + i[C] * (z - depth) + i[D] > 0)
             continue;
-        if (frustum_[i][A] * (x + width) + frustum_[i][B] * (y - height) + frustum_[i][C] * (z - depth) + frustum_[i][D] > 0)
+        if (i[A] * (x + width) + i[B] * (y - height) + i[C] * (z - depth) + i[D] > 0)
             continue;
-        if (frustum_[i][A] * (x - width) + frustum_[i][B] * (y + height) + frustum_[i][C] * (z - depth) + frustum_[i][D] > 0)
+        if (i[A] * (x - width) + i[B] * (y + height) + i[C] * (z - depth) + i[D] > 0)
             continue;
-        if (frustum_[i][A] * (x + width) + frustum_[i][B] * (y + height) + frustum_[i][C] * (z - depth) + frustum_[i][D] > 0)
+        if (i[A] * (x + width) + i[B] * (y + height) + i[C] * (z - depth) + i[D] > 0)
             continue;
-        if (frustum_[i][A] * (x - width) + frustum_[i][B] * (y - height) + frustum_[i][C] * (z + depth) + frustum_[i][D] > 0)
+        if (i[A] * (x - width) + i[B] * (y - height) + i[C] * (z + depth) + i[D] > 0)
             continue;
-        if (frustum_[i][A] * (x + width) + frustum_[i][B] * (y - height) + frustum_[i][C] * (z + depth) + frustum_[i][D] > 0)
+        if (i[A] * (x + width) + i[B] * (y - height) + i[C] * (z + depth) + i[D] > 0)
             continue;
-        if (frustum_[i][A] * (x - width) + frustum_[i][B] * (y + height) + frustum_[i][C] * (z + depth) + frustum_[i][D] > 0)
+        if (i[A] * (x - width) + i[B] * (y + height) + i[C] * (z + depth) + i[D] > 0)
             continue;
-        if (frustum_[i][A] * (x + width) + frustum_[i][B] * (y + height) + frustum_[i][C] * (z + depth) + frustum_[i][D] > 0)
+        if (i[A] * (x + width) + i[B] * (y + height) + i[C] * (z + depth) + i[D] > 0)
             continue;
         return false;
     }

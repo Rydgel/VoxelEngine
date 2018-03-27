@@ -1,6 +1,6 @@
 #include <iostream>
-#include <states/PlayState.hpp>
-#include <Game.hpp>
+#include "states/PlayState.hpp"
+#include "Game.hpp"
 
 int main()
 {

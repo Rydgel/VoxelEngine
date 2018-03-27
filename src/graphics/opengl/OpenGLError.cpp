@@ -1,6 +1,6 @@
 #include "OpenGLError.hpp"
 
-const char *OpenGLError::glErrorString(GLenum err)
+const char * OpenGLError::glErrorString(GLenum err)
 {
     switch (err) {
         case GL_INVALID_ENUM: return "Invalid Enum";
@@ -18,7 +18,7 @@ bool OpenGLError::isOpenGLError()
 {
     bool isError = false;
     GLenum errCode;
-    const char *errString;
+    const char * errString;
 
     while ((errCode = glGetError()) != GL_NO_ERROR) {
         isError = true;

@@ -1,10 +1,10 @@
 #ifndef VOXELS_MAPGENERATORHEIGHTMAP_HPP
 #define VOXELS_MAPGENERATORHEIGHTMAP_HPP
 
-#include "MapGenerator.hpp"
-#include "../Chunk.hpp"
 #include <iostream>
 #include <vector>
+#include "MapGenerator.hpp"
+#include "graphics/models/Chunk.hpp"
 
 class MapGenerator;
 class MapGeneratorHeightmap : public MapGenerator

@@ -1,4 +1,4 @@
-#include <graphics/models/Chunk.hpp>
+#include "graphics/models/Chunk.hpp"
 #include "SimpleMesher.hpp"
 
 inline static Point3D convertGLMToPoint(glm::vec3 vec)
@@ -18,63 +18,63 @@ SimpleMesher::SimpleMesher(Chunk & chunk, Mesh & mesh)
 constexpr std::array<MeshProperty, 6> meshingProperties = { // NOLINT
         // Back
         MeshProperty {
-                { 0, 0, -1 },
-                {
-                        VertexProperty { { 1, 0, 0 }, { 1, 1, 0 } },
-                        VertexProperty { { 0, 0, 0 }, { 0, 1, 0 } },
-                        VertexProperty { { 0, 1, 0 }, { 0, 0, 0 } },
-                        VertexProperty { { 1, 1, 0 }, { 1, 0, 0 } }
-                }
+            { 0, 0, -1 },
+            {
+                VertexProperty { { 1, 0, 0 }, { 1, 1, 0 } },
+                VertexProperty { { 0, 0, 0 }, { 0, 1, 0 } },
+                VertexProperty { { 0, 1, 0 }, { 0, 0, 0 } },
+                VertexProperty { { 1, 1, 0 }, { 1, 0, 0 } }
+            }
         },
         // Right
         MeshProperty {
-                { 1, 0, 0 },
-                {
-                        VertexProperty { { 1, 0, 1 }, { 1, 1, 0 } },
-                        VertexProperty { { 1, 0, 0 }, { 0, 1, 0 } },
-                        VertexProperty { { 1, 1, 0 }, { 0, 0, 0 } },
-                        VertexProperty { { 1, 1, 1 }, { 1, 0, 0 } }
-                }
+            { 1, 0, 0 },
+            {
+                VertexProperty { { 1, 0, 1 }, { 1, 1, 0 } },
+                VertexProperty { { 1, 0, 0 }, { 0, 1, 0 } },
+                VertexProperty { { 1, 1, 0 }, { 0, 0, 0 } },
+                VertexProperty { { 1, 1, 1 }, { 1, 0, 0 } }
+            }
         },
         // Front
         MeshProperty {
-                { 0, 0, 1 },
-                {
-                        VertexProperty { { 0, 0, 1 }, { 1, 1, 0 } },
-                        VertexProperty { { 1, 0, 1 }, { 0, 1, 0 } },
-                        VertexProperty { { 1, 1, 1 }, { 0, 0, 0 } },
-                        VertexProperty { { 0, 1, 1 }, { 1, 0, 0 } }
-                }
+            { 0, 0, 1 },
+            {
+                VertexProperty { { 0, 0, 1 }, { 1, 1, 0 } },
+                VertexProperty { { 1, 0, 1 }, { 0, 1, 0 } },
+                VertexProperty { { 1, 1, 1 }, { 0, 0, 0 } },
+                VertexProperty { { 0, 1, 1 }, { 1, 0, 0 } }
+            }
         },
         // Left
         MeshProperty {
-                { -1, 0, 0 },
-                {
-                        VertexProperty { { 0, 0, 0 }, { 1, 1, 0 } },
-                        VertexProperty { { 0, 0, 1 }, { 0, 1, 0 } },
-                        VertexProperty { { 0, 1, 1 }, { 0, 0, 0 } },
-                        VertexProperty { { 0, 1, 0 }, { 1, 0, 0 } }
-                }
+            { -1, 0, 0 },
+            {
+                VertexProperty { { 0, 0, 0 }, { 1, 1, 0 } },
+                VertexProperty { { 0, 0, 1 }, { 0, 1, 0 } },
+                VertexProperty { { 0, 1, 1 }, { 0, 0, 0 } },
+                VertexProperty { { 0, 1, 0 }, { 1, 0, 0 } }
+            }
         },
         // Top
         MeshProperty {
-                { 0, 1, 0 },
-                {
-                        VertexProperty { { 0, 1, 1 }, { 1, 1, 2 } },
-                        VertexProperty { { 1, 1, 1 }, { 0, 1, 2 } },
-                        VertexProperty { { 1, 1, 0 }, { 0, 0, 2 } },
-                        VertexProperty { { 0, 1, 0 }, { 1, 0, 2 } }
-                }
+            { 0, 1, 0 },
+            {
+                VertexProperty { { 0, 1, 1 }, { 1, 1, 2 } },
+                VertexProperty { { 1, 1, 1 }, { 0, 1, 2 } },
+                VertexProperty { { 1, 1, 0 }, { 0, 0, 2 } },
+                VertexProperty { { 0, 1, 0 }, { 1, 0, 2 } }
+            }
         },
         // Bottom
         MeshProperty {
-                { 0, -1, 0 },
-                {
-                        VertexProperty { { 0, 0, 0 }, { 1, 1, 1 } },
-                        VertexProperty { { 1, 0, 0 }, { 0, 1, 1 } },
-                        VertexProperty { { 1, 0, 1 }, { 0, 0, 1 } },
-                        VertexProperty { { 0, 0, 1 }, { 1, 0, 1 } }
-                }
+            { 0, -1, 0 },
+            {
+                VertexProperty { { 0, 0, 0 }, { 1, 1, 1 } },
+                VertexProperty { { 1, 0, 0 }, { 0, 1, 1 } },
+                VertexProperty { { 1, 0, 1 }, { 0, 0, 1 } },
+                VertexProperty { { 0, 0, 1 }, { 1, 0, 1 } }
+            }
         },
 };
 
@@ -108,11 +108,11 @@ void SimpleMesher::addCube(int x, int y, int z)
                 auto [off2x, off2y, off2z] = off2;
 
                 mesh_.vertices.push_back(
-                        {
-                                { ox_ + x + off1x, oy_ + y + off1y, oz_ + z + off1z       },
-                                { x,               y,               z                     },
-                                { off2x,           off2y,           textureOffset + off2z }
-                        }
+                    {
+                        { ox_ + x + off1x, oy_ + y + off1y, oz_ + z + off1z       },
+                        { x,               y,               z                     },
+                        { off2x,           off2y,           textureOffset + off2z }
+                    }
                 );
             }
 

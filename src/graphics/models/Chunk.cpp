@@ -1,4 +1,4 @@
-#include <graphics/mesher/SimpleMesher.hpp>
+#include "graphics/mesher/SimpleMesher.hpp"
 #include "Chunk.hpp"
 
 Chunk::Chunk(int id, glm::vec3 offset)

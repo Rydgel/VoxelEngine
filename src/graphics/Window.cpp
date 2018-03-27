@@ -1,7 +1,7 @@
 #include <glad.h>
 #include <stdexcept>
 #include <imgui.h>
-#include <graphics/gui/imgui_impl_glfw_gl3.h>
+#include "graphics/gui/imgui_impl_glfw_gl3.h"
 #include "Window.hpp"
 
 Window::Window(InputManager & im, const int width, const int height, const char *title)

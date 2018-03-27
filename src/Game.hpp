@@ -1,10 +1,10 @@
 #ifndef VOXELSENGINE_GAME_HPP
 #define VOXELSENGINE_GAME_HPP
 
-#include <graphics/Window.hpp>
-#include <graphics/Timer.hpp>
 #include <stack>
 #include <optional>
+#include "graphics/Window.hpp"
+#include "graphics/Timer.hpp"
 
 struct IGameState;
 

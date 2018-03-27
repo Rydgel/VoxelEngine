@@ -20,7 +20,7 @@ double Timer::getTime()
 float Timer::getDelta()
 {
     const double time = getTime();
-    const float delta = static_cast<float>(time - lastLoopTime_);
+    auto delta = static_cast<float>(time - lastLoopTime_);
     lastLoopTime_ = time;
     timeCount_ += delta;
     return delta;

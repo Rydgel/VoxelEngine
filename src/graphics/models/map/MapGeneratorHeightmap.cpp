@@ -1,6 +1,5 @@
-#include <utils/SimplexNoise.hpp>
 #include "MapGeneratorHeightmap.hpp"
-#include "../../utils/SimplexNoise.hpp"
+#include "utils/SimplexNoise.hpp"
 
 
 MapGeneratorHeightmap::MapGeneratorHeightmap(int seed)

@@ -2,14 +2,14 @@
 #define VOXELSENGINE_CHUNK_HPP
 
 #include <array>
-#include <glm/vec3.hpp>
-#include <graphics/opengl/Mesh.hpp>
-#include <graphics/opengl/VertexArray.hpp>
-#include <graphics/opengl/ArrayBuffer.hpp>
-#include <graphics/opengl/IndexBuffer.hpp>
 #include <optional>
-#include <graphics/mesher/IMesher.hpp>
-#include <graphics/models/map/MapGeneratorHeightmap.hpp>
+#include <glm/vec3.hpp>
+#include "graphics/opengl/Mesh.hpp"
+#include "graphics/opengl/VertexArray.hpp"
+#include "graphics/opengl/ArrayBuffer.hpp"
+#include "graphics/opengl/IndexBuffer.hpp"
+#include "graphics/mesher/IMesher.hpp"
+#include "graphics/models/map/MapGeneratorHeightmap.hpp"
 #include "Voxel.hpp"
 
 class MapGeneratorHeightmap;

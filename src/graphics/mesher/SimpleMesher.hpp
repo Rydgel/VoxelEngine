@@ -2,7 +2,7 @@
 #define VOXELSENGINE_SIMPLEMESHER_HPP
 
 #include <tuple>
-#include <graphics/models/Chunk.hpp>
+#include "graphics/models/Chunk.hpp"
 #include "IMesher.hpp"
 
 struct Point3D { float x, y, z; };

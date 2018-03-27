@@ -1,8 +1,8 @@
 #ifndef VOXELSENGINE_PLAYSTATE_HPP
 #define VOXELSENGINE_PLAYSTATE_HPP
 
-#include <graphics/models/World.hpp>
-#include <Game.hpp>
+#include "graphics/models/World.hpp"
+#include "Game.hpp"
 #include "IGameState.hpp"
 
 struct PlayState : public IGameState

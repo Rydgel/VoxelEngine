@@ -6,7 +6,7 @@
 
 struct OpenGLError
 {
-    const char* glErrorString(GLenum err);
+    const char * glErrorString(GLenum err);
     bool isOpenGLError();
     void checkOpenGLError(std::string error);
 };

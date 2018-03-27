@@ -1,4 +1,4 @@
-#include <graphics/opengl/OpenGLError.hpp>
+#include "graphics/opengl/OpenGLError.hpp"
 #include "ChunkRenderer.hpp"
 
 ChunkRenderer::ChunkRenderer()

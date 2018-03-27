@@ -1,11 +1,11 @@
 #ifndef VOXELSENGINE_RENDERER_HPP
 #define VOXELSENGINE_RENDERER_HPP
 
-#include <graphics/opengl/TextureArray.hpp>
-#include <graphics/opengl/Shader.hpp>
 #include <glm/glm.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "graphics/opengl/TextureArray.hpp"
+#include "graphics/opengl/Shader.hpp"
 #include "graphics/models/Chunk.hpp"
 
 struct ChunkRenderer
