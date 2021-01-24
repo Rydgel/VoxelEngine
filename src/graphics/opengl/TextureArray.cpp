@@ -1,6 +1,6 @@
 #include "TextureArray.hpp"
+#include <glad/gl.h>
 #include <stb_image.hpp>
-#include <glad.h>
 
 TextureArray::TextureArray()
 {

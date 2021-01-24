@@ -1,6 +1,7 @@
 #ifndef VOXELSENGINE_CAMERA_HPP
 #define VOXELSENGINE_CAMERA_HPP
 
+#include <glad/gl.h>
 #include <GLFW/glfw3.h>
 #include <unordered_map>
 #include <glm/glm.hpp>

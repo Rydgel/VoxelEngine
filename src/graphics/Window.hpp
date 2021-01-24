@@ -1,6 +1,7 @@
 #ifndef VOXELSENGINE_WINDOW_HPP
 #define VOXELSENGINE_WINDOW_HPP
 
+#include "glad/gl.h"
 #include <GLFW/glfw3.h>
 #include <memory>
 #include "InputManager.hpp"

@@ -1,4 +1,3 @@
-#include <glad.h>
 #include <stdexcept>
 #include <imgui.h>
 #include "graphics/gui/imgui_impl_glfw_gl3.h"
@@ -13,9 +12,9 @@ Window::Window(InputManager & im, const int width, const int height, const char 
         throw std::runtime_error("Failed to initialize GLFW");
     }
 
-    // glfwWindowHint(GLFW_SAMPLES, 8); // 8x antialiasing
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // We want OpenGL 4.1
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_SAMPLES, 8); // 8x antialiasing
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // We want OpenGL 4.4
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 #if __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy
 #endif
@@ -34,7 +33,7 @@ Window::Window(InputManager & im, const int width, const int height, const char 
     // VSYNC
     glfwSwapInterval(0);
     // Glad openGL loader
-    gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+    gladLoadGL(glfwGetProcAddress);
 
     // Setup ImGui binding
     ImGui_ImplGlfwGL3_Init(window_.get(), true);

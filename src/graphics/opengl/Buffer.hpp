@@ -1,6 +1,7 @@
 #ifndef VOXELSENGINE_BUFFER_HPP
 #define VOXELSENGINE_BUFFER_HPP
 
+#include <glad/gl.h>
 #include <GLFW/glfw3.h>
 #include <vector>
 
@@ -28,7 +29,7 @@ struct Buffer
 
 private:
 
-    GLuint id_;
+    GLuint id_ = 0;
     GLenum type_;
 };
 

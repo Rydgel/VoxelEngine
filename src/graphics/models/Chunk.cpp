@@ -1,5 +1,4 @@
 #include "graphics/mesher/SimpleMesher.hpp"
-#include "Chunk.hpp"
 
 Chunk::Chunk(int id, glm::vec3 offset)
 {
@@ -19,7 +18,7 @@ const glm::vec3 & Chunk::getOffset() const
     return offset_;
 }
 
-const MaybeVoxel Chunk::getVoxel(int x, int y, int z) const
+MaybeVoxel Chunk::getVoxel(int x, int y, int z) const
 {
     if (x < 0 || x >= Chunk::chunkWidth) {
         return std::nullopt;
@@ -109,7 +108,6 @@ void Chunk::meshing()
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) offsetof(Vertex, uvs));
 
     verticesBuffer_.unbind();
-    indicesBuffer_.unbind();
     vertexArray_.unbind();
 
     needMeshing = false;

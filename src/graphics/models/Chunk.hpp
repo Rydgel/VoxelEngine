@@ -29,7 +29,7 @@ struct Chunk
 
     Chunk(int id, glm::vec3 offset);
     const glm::vec3 & getOffset() const;
-    const MaybeVoxel getVoxel(int x, int y, int z) const;
+    MaybeVoxel getVoxel(int x, int y, int z) const;
     bool isAir(int x, int y, int z) const;
     bool voxelIsHidden(int x, int y, int z) const;
     void fill(Voxel voxel, int x, int y, int z);

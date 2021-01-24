@@ -22,8 +22,8 @@ void MapGeneratorHeightmap::makeChunk(Chunk & chunk)
     auto offset = chunk.getOffset();
     for (int x = 0; x < Chunk::chunkWidth; x++) {
         for (int z = 0; z < Chunk::chunkDepth; z++) {
-            float xPosition = offset.x + x;
-            float zPosition = offset.z + z;
+            float xPosition = offset.x + static_cast<float>(x);
+            float zPosition = offset.z + static_cast<float>(z);
 
             // Get the noise height
             float noise = octave_noise_2d(m_landscapeOctaves, m_landscapePersistence, m_landscapeScale, xPosition, zPosition);
@@ -39,7 +39,7 @@ void MapGeneratorHeightmap::makeChunk(Chunk & chunk)
             for (int y = 0; y < Chunk::chunkHeight; y++) {
                 // float yPosition = offset.y + y;
 
-                if (y < noiseHeight) {
+                if (static_cast<float>(y) < noiseHeight) {
                     chunk.fill(Voxel { VoxelType::GRASS }, x, y, z);
                 }
             }

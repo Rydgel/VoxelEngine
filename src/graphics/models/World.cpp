@@ -48,7 +48,7 @@ void World::update(const float dt)
 void World::draw(const float dt)
 {
     auto view = camera_.getViewMatrix();
-    auto projection = glm::perspective(camera_.getZoom(), 1200.0f / 800.0f, 0.1f, 500.0f);
+    auto projection = glm::perspective(camera_.getZoom(), 1920.0f / 1080.0f, 0.1f, 500.0f);
     frustum_.CalculateFrustum(projection, view);
     auto cameraPosition = camera_.getPosition();
 

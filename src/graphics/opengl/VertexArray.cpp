@@ -1,4 +1,3 @@
-#include <glad.h>
 #include "VertexArray.hpp"
 
 VertexArray::VertexArray()

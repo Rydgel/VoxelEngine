@@ -1,6 +1,7 @@
 #ifndef VOXELSENGINE_SHADER_HPP
 #define VOXELSENGINE_SHADER_HPP
 
+#include <glad/gl.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <glm/glm.hpp>

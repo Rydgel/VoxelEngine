@@ -9,7 +9,6 @@ const char * OpenGLError::glErrorString(GLenum err)
         case GL_STACK_OVERFLOW: return "Stack Overflow";
         case GL_STACK_UNDERFLOW: return "Stack Underflow";
         case GL_OUT_OF_MEMORY: return "Out of Memory";
-        case GL_TABLE_TOO_LARGE: return "Table too Large";
         default: return "Unknown Error";
     }
 }
@@ -29,7 +28,7 @@ bool OpenGLError::isOpenGLError()
     return isError;
 }
 
-void OpenGLError::checkOpenGLError(std::string error)
+void OpenGLError::checkOpenGLError(const std::string& error)
 {
     if (isOpenGLError()) {
         std::cerr << error << std::endl;

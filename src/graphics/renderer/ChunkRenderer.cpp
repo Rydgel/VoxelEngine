@@ -1,5 +1,6 @@
 #include "graphics/opengl/OpenGLError.hpp"
 #include "ChunkRenderer.hpp"
+#include <glm/gtx/string_cast.hpp>
 
 ChunkRenderer::ChunkRenderer()
 : shader_("shaders/default.vert", "shaders/default.frag")
@@ -28,7 +29,7 @@ ChunkRenderer::~ChunkRenderer()
 void ChunkRenderer::draw(std::shared_ptr<Chunk> chunk, glm::mat4 view, glm::mat4 projection, glm::vec3 cameraPosition)
 {
     auto pos = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::mat4 model;
+    glm::mat4 model(1);
     model = glm::translate(model, pos);
     shader_.setUniform("model", model);
     shader_.setUniform("view", view);
@@ -45,8 +46,8 @@ void ChunkRenderer::draw(std::shared_ptr<Chunk> chunk, glm::mat4 view, glm::mat4
     // chunk->draw();
     // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    // OpenGLError errorGL;
-    // errorGL.isOpenGLError();
+    OpenGLError errorGL;
+    errorGL.isOpenGLError();
 }
 
 void ChunkRenderer::bind()

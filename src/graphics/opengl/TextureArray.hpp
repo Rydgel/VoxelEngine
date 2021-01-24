@@ -1,6 +1,10 @@
 #ifndef VOXELSENGINE_TEXTURE_HPP
 #define VOXELSENGINE_TEXTURE_HPP
 
+#define GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE
+#define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT 0x84FF
+
+#include <GLFW/glfw3.h>
 #include <vector>
 #include <iostream>
 

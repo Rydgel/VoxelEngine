@@ -95,21 +95,24 @@ void SimpleMesher::meshing()
 void SimpleMesher::addCube(int x, int y, int z)
 {
     // todo this must change based on Voxel type
-    int textureOffset = 0;
+    float textureOffset = 0.f;
 
     // We need to add the 6 faces of cube
     for (auto [normal, verticesProps] : meshingProperties) {
         auto [xn, yn, zn] = normal;
         // We add a face only if it touches a transparent element
         auto indicesOff = mesh_.verticesSize();
-        if (chunk_.isAir(x + xn, y + yn, z + zn)) {
+        if (chunk_.isAir(x + static_cast<int>(xn), y + static_cast<int>(yn), z + static_cast<int>(zn))) {
             for (auto [off1, off2] : verticesProps) {
                 auto [off1x, off1y, off1z] = off1;
                 auto [off2x, off2y, off2z] = off2;
+                auto xf = static_cast<float>(x);
+                auto yf = static_cast<float>(y);
+                auto zf = static_cast<float>(z);
 
                 mesh_.vertices.push_back(
                     {
-                        { ox_ + x + off1x, oy_ + y + off1y, oz_ + z + off1z       },
+                        { ox_ + xf + off1x, oy_ + yf + off1y, oz_ + zf + off1z       },
                         { x,               y,               z                     },
                         { off2x,           off2y,           textureOffset + off2z }
                     }
