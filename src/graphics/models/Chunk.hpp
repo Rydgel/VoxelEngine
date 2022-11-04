@@ -3,6 +3,7 @@
 
 #include <array>
 #include <optional>
+#include <memory>
 #include <glm/vec3.hpp>
 #include "graphics/opengl/Mesh.hpp"
 #include "graphics/opengl/VertexArray.hpp"
